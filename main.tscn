@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=3 uid="uid://bqm2ngau8opnl"]
+
+[ext_resource type="Script" path="res://PlayerScript.gd" id="1_njics"]
+[ext_resource type="Script" path="res://Hand.gd" id="2_v85uw"]
+
+[sub_resource type="Gradient" id="Gradient_ethal"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nmsk5"]
+gradient = SubResource("Gradient_ethal")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_684jq"]
+size = Vector2(64, 64)
+
+[sub_resource type="Gradient" id="Gradient_j7jqe"]
+offsets = PackedFloat32Array(0, 0.467532, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.642857, 0.642857, 0.642857, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_k6tyf"]
+gradient = SubResource("Gradient_j7jqe")
+fill_from = Vector2(1, 0.866973)
+fill_to = Vector2(0.0321101, 0.399083)
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(597, 323)
+
+[node name="Mitch" type="Node2D" parent="."]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(0, -0.999992)
+script = ExtResource("1_njics")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture = SubResource("GradientTexture2D_nmsk5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_684jq")
+
+[node name="Control" type="Control" parent="CharacterBody2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CharacterBody2D/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = -0.175
+anchor_bottom = -0.05
+offset_left = -27.0
+offset_top = -72.0
+offset_right = 27.0
+offset_bottom = -40.0
+scale = Vector2(1.14149, 1.1367)
+text = "Mitch"
+metadata/_edit_use_anchors_ = true
+
+[node name="Hand" type="Node2D" parent="CharacterBody2D"]
+script = ExtResource("2_v85uw")
+
+[node name="FireworkGun2D" type="Node2D" parent="CharacterBody2D/Hand"]
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D/Hand/FireworkGun2D"]
+position = Vector2(46, 0)
+scale = Vector2(0.749048, 0.261173)
+texture = SubResource("GradientTexture2D_k6tyf")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 100)
+scale = Vector2(6.46362, 0.629343)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = SubResource("GradientTexture2D_nmsk5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_684jq")

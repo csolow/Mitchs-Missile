@@ -1,0 +1,6 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1701818082
+Hand.gd::GDScript::-1::1701797448::0::1::::<>Node2D<>::
+icon.svg::CompressedTexture2D::6968194332278467078::1701788992::1701789018::1::::<><>::
+main.tscn::PackedScene::3535877605169271169::1701797448::0::1::::<><>::res://PlayerScript.gd<>res://Hand.gd
+PlayerScript.gd::GDScript::-1::1701792591::0::1::::<>CharacterBody2D<>::
