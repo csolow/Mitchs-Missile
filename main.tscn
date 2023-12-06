@@ -45,8 +45,8 @@ metadata/_edit_use_anchors_ = true
 [node name="RichTextLabel" type="RichTextLabel" parent="CharacterBody2D/Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.05
-anchor_top = 0.05
+anchor_left = -0.175
+anchor_top = -0.05
 anchor_right = -0.175
 anchor_bottom = -0.05
 offset_left = -27.0
