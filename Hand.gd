@@ -11,6 +11,12 @@ func _ready():
 func _process(_delta):
 	MousePosition = get_global_mouse_position()
 	
-	PivotToMouse = MousePosition - get_global_transform().get_origin()
-	transform = transform.rotated((PivotToMouse.angle()-transform.get_rotation()))
+	PivotToMouse = get_pivot_to_mouse()
+	transform = transform.rotated(get_pivot_angle())
 	pass
+
+func get_pivot_to_mouse():
+	return MousePosition - get_global_transform().get_origin()
+
+func get_pivot_angle():
+	return PivotToMouse.angle()-transform.get_rotation()

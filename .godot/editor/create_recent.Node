@@ -1,10 +1,14 @@
-Timer
+Camera2D
 Node2D
+Node
+AnimatableBody2D
+CharacterBody2D
+CollisionShape2D
 Sprite2D
+PinJoint2D
+Timer
 AnimatedSprite2D
 StaticBody2D
-CharacterBody2D
 Control
 RichTextLabel
 RigidBody2D
-CollisionShape2D

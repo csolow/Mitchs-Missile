@@ -1,3 +1,5 @@
+res://Prefabs/FireworkPrefab.tscn
 res://main.tscn
-res://Hand.gd
 res://PlayerScript.gd
+res://Scripts/FireworkPrefab.gd
+res://Hand.gd

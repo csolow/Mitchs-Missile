@@ -1,9 +1,12 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1701873342
+::res://::1701918562
 Hand.gd::GDScript::-1::1701872470::0::1::::<>Node2D<>::
 icon.svg::CompressedTexture2D::6968194332278467078::1701870661::1701870661::1::::<><>::
-main.tscn::PackedScene::3535877605169271169::1701873321::0::1::::<><>::res://PlayerScript.gd<>res://Hand.gd
-PlayerScript.gd::GDScript::-1::1701873321::0::1::::<>CharacterBody2D<>::
+main.tscn::PackedScene::3535877605169271169::1701892687::0::1::::<><>::res://PlayerScript.gd<>res://Hand.gd
+PlayerScript.gd::GDScript::-1::1701889590::0::1::::<>CharacterBody2D<>::
 README.md::TextFile::-1::1701870661::0::1::::<><>::
-::res://scenes/::1701873331
+::res://Prefabs/::1701892687
+FireworkPrefab.gd::GDScript::-1::1701892687::0::1::::<>AnimatableBody2D<>::
+FireworkPrefab.tscn::PackedScene::3975293045096769319::1701918863::0::1::::<><>::res://Prefabs/FireworkPrefab.gd
+::res://Scenes/::1701873331
 ::res://Scripts/::1701873342

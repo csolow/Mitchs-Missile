@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwvwq38h3n4kx"]
+
+[ext_resource type="Script" path="res://Scripts/FireworkPrefab.gd" id="1_sfp8o"]
+
+[sub_resource type="Gradient" id="Gradient_41x46"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2oocw"]
+gradient = SubResource("Gradient_41x46")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nq7df"]
+size = Vector2(160, 18)
+
+[node name="AnimatableBody2D" type="AnimatableBody2D"]
+sync_to_physics = false
+script = ExtResource("1_sfp8o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(80, 0)
+scale = Vector2(2.5, 0.3)
+texture = SubResource("GradientTexture2D_2oocw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(80, 0)
+shape = SubResource("RectangleShape2D_nq7df")
+disabled = true
