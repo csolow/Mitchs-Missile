@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0y3wsv5ix7g7"]
+
+[ext_resource type="Script" path="res://Scripts/options_menu.gd" id="1_lfw32"]
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lfw32")
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Back"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

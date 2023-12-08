@@ -1,2 +1,5 @@
 res://Scenes/menu.tscn
 res://Scripts/menu.gd
+res://Scenes/options_menu.tscn
+res://Scripts/options_menu.gd
+res://Prefabs/FireworkPrefab.tscn

@@ -47,4 +47,5 @@ focus_neighbor_bottom = NodePath("../HostButton")
 text = "Quit"
 
 [connection signal="pressed" from="VBoxContainer/TrainingButton" to="." method="_on_training_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
