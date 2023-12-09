@@ -1,9 +1,10 @@
 extends AnimatableBody2D
 @export var DirectionVector : Vector2
-var speed = 2
+@export var speed = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	transform = transform.rotated_local(DirectionVector.angle())
 	pass # Replace with function body.
 
 
@@ -13,4 +14,5 @@ func _physics_process(delta):
 	pass
 
 func set_angle(angle):
-	transform = transform.rotated(angle - transform.get_rotation())
+	transform = global_transform.rotated(angle)
+	print(global_transform.get_origin())

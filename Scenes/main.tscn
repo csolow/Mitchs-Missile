@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bqm2ngau8opnl"]
+[gd_scene load_steps=11 format=3 uid="uid://bqm2ngau8opnl"]
 
-[ext_resource type="Script" path="res://PlayerScript.gd" id="1_njics"]
+[ext_resource type="Script" path="res://NewPlayerScript.gd" id="1_bhu62"]
 [ext_resource type="Script" path="res://Hand.gd" id="2_v85uw"]
+[ext_resource type="Script" path="res://Scripts/CooldownContainer.gd" id="3_mo3i7"]
+[ext_resource type="PackedScene" uid="uid://ckb3k1togm4qx" path="res://Prefabs/CooldownContainer.tscn" id="4_oyk4o"]
 
 [sub_resource type="Gradient" id="Gradient_ethal"]
 
@@ -27,7 +29,10 @@ size = Vector2(64, 64)
 
 [node name="Mitch" type="CharacterBody2D" parent="."]
 position = Vector2(0, -250)
-script = ExtResource("1_njics")
+script = ExtResource("1_bhu62")
+speed = 300
+acceleration = 250
+friction = 50
 
 [node name="Sprite2D" type="Sprite2D" parent="Mitch"]
 texture = SubResource("GradientTexture2D_nmsk5")
@@ -81,3 +86,23 @@ position = Vector2(0, 0.000244141)
 shape = SubResource("RectangleShape2D_vgkwu")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Overlay" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Container" type="Container" parent="Overlay"]
+layout_mode = 0
+offset_left = -563.0
+offset_top = -301.0
+offset_right = -523.0
+offset_bottom = -261.0
+script = ExtResource("3_mo3i7")
+
+[node name="Panel" type="Panel" parent="Overlay/Container"]
+layout_mode = 2
+
+[node name="Control" parent="Overlay" instance=ExtResource("4_oyk4o")]
+layout_mode = 1

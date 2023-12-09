@@ -13,6 +13,7 @@ size = Vector2(160, 18)
 [node name="AnimatableBody2D" type="AnimatableBody2D"]
 sync_to_physics = false
 script = ExtResource("1_sfp8o")
+speed = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(80, 0)
