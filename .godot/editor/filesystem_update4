@@ -1,6 +1,4 @@
 res://Scenes/menu.tscn
-res://PlayerScript.gd
 res://Scenes/main.tscn
 res://Prefabs/FireworkPrefab.tscn
 res://Prefabs/CooldownContainer.tscn
-res://NewPlayerScript.gd
