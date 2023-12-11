@@ -8,8 +8,8 @@ extends CharacterBody2D
 @onready var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 #
-@onready var rocket_to_be_spawned = load("res://Prefabs/FireworkPrefab.tscn")
-@onready var instantiation_point_object = get_node("ArmPivot/InstantiationPoint") 
+@onready var rocket_to_be_spawned = load("res://Prefabs/Projectiles/FireworkProjectile.tscn")
+@onready var instantiation_point_object = get_node("ArmPivot/InstantiationPoint")
 @onready var arm_pivot_child = get_node("ArmPivot") 
 @onready var FireworkGun = get_node("ArmPivot/FireworkGun") 
 
@@ -39,7 +39,7 @@ func _physics_process(delta):
 		velocity.y = jump_speed	
 
 	# Moving
-	if input_dir != Vector2.ZERO:
+	if input_dir != Vector2.ZERO and is_on_floor():
 		accelerate(input_dir)
 	# Idle
 	elif input_dir == Vector2.ZERO and is_on_floor():

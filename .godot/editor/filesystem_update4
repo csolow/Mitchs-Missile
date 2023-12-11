@@ -2,3 +2,5 @@ res://Scenes/menu.tscn
 res://Scenes/main.tscn
 res://Prefabs/FireworkPrefab.tscn
 res://Prefabs/CooldownContainer.tscn
+res://Scripts/NewPlayerScript.gd
+res://Prefabs/Projectiles/FireworkProjectile.tscn
