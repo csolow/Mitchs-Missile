@@ -1,6 +1,8 @@
-res://Scenes/menu.tscn
 res://Scenes/main.tscn
-res://Prefabs/FireworkPrefab.tscn
+res://Scripts/PlayerScript.gd
+res://Scripts/Shaders/distortion.gdshader
+res://Scenes/menu.tscn
+res://Prefabs/ExplosionPrefab.tscn
 res://Prefabs/CooldownContainer.tscn
-res://Scripts/NewPlayerScript.gd
 res://Prefabs/Projectiles/FireworkProjectile.tscn
+res://Prefabs/Projectiles/AutomaticGun.tscn

@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var acceleration = 5
 @export var friction = 5
 @export var jump_speed = -400
-@export var knockback_speed = 400
+
 # Get the gravity from the project settings so you can sync with rigid body nodes.
 @onready var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -14,7 +14,8 @@ extends CharacterBody2D
 @onready var FireworkGun = get_node("ArmPivot/FireworkGun") 
 
 #Cooldown variables
-@export var cooldown = 0
+@export var cooldown_start = 0.2
+@onready var cooldown = cooldown_start
 @onready var cooldown_counter = cooldown
 
 
@@ -23,10 +24,13 @@ func _process(delta):
 	cooldown_counter += delta
 	
 	#Handle firing
-	if Input.is_action_just_pressed("fire") and cooldown_counter>cooldown:
-		cooldown_counter = 0
-		fire_gun()
-
+	if Input.is_action_just_pressed("fire"):
+		if get_node("ArmPivot/FireworkGun").has_method("start_fire"):
+			get_node("ArmPivot/FireworkGun").start_fire()
+			
+	if Input.is_action_just_released("fire"):
+		if get_node("ArmPivot/FireworkGun").has_method("stop_fire"):
+			get_node("ArmPivot/FireworkGun").stop_fire()
 
 func _physics_process(delta):
 	var input_dir: Vector2 = get_input_direction()
@@ -39,7 +43,7 @@ func _physics_process(delta):
 		velocity.y = jump_speed	
 
 	# Moving
-	if input_dir != Vector2.ZERO and is_on_floor():
+	if input_dir != Vector2.ZERO:
 		accelerate(input_dir)
 	# Idle
 	elif input_dir == Vector2.ZERO and is_on_floor():
@@ -64,17 +68,22 @@ func get_input_direction() -> Vector2:
 	
 	return input_direction
 
+func _on_body_entered(body):
+	if body.is_in_group("Explosion"):
+		print("Collision")
+		velocity = body.get_global_transform().get_origin() - get_global_transform().get_origin()
+		pass
 
-func fire_gun():
-	
-	var parent_node = get_tree().get_root().get_node("Main")
-	var rocket_instance = rocket_to_be_spawned.instantiate()
-	
-	rocket_instance.transform = rocket_instance.transform.translated(instantiation_point_object.global_position)
-	rocket_instance.DirectionVector = arm_pivot_child.get_pivot_to_mouse()
-	
-	#Add instance to scene
-	parent_node.add_child(rocket_instance)
-	
+func on_explosion_body_entered(body):
+	var new_velocity = calculate_difference_vector(body.get_global_transform().get_origin())
+	velocity = new_velocity.normalized() * 750
+	cooldown = 1
+	print(body)
+	print(new_velocity.normalized())
+	pass # Replace with function body.
+
+func calculate_difference_vector (prop_vector):
+	return get_global_transform().get_origin() - prop_vector
+
+func add_knockback (knockback_speed):
 	velocity = arm_pivot_child.get_pivot_to_mouse().normalized() * -knockback_speed
-

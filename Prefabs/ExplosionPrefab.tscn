@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://qjsa7nxug78s"]
+
+[ext_resource type="Script" path="res://Scripts/ExplosionScript.gd" id="1_4cron"]
+[ext_resource type="Texture2D" uid="uid://cvpjnu11h8kmi" path="res://Sprites/Circle.png" id="1_i0j7e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0ja1b"]
+radius = 103.0
+
+[node name="Explosion" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+collision_layer = 2
+script = ExtResource("1_4cron")
+cooldown = 0.25
+
+[node name="Circle" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_i0j7e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0ja1b")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
