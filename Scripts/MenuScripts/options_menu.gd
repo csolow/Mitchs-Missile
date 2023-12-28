@@ -11,5 +11,13 @@ func _process(delta):
 	pass
 
 
-func _on_back_button_pressed():
+func _on_video_pressed():
+	get_tree().change_scene_to_file("res://Scenes/Video_menu.tscn")
+
+
+func _on_audio_pressed():
+	get_tree().change_scene_to_file("res://Scenes/Audio_menu.tscn")
+	
+
+func _on_back_pressed():
 	get_tree().change_scene_to_file("res://Scenes/menu.tscn")

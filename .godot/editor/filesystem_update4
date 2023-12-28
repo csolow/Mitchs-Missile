@@ -1,1 +1,10 @@
+<<<<<<< HEAD
 res://Scripts/PlayerScript.gd
+=======
+res://Scenes/menu.tscn
+res://Scripts/Shaders/distortion.gdshader
+res://Scenes/Audio_menu.tscn
+res://Scenes/main.tscn
+res://Scripts/MenuScripts/Audio_menu.gd
+res://Scripts/FireworkPrefab.gd
+>>>>>>> b791dac1079f164ca214ec489e9e50ebae79818c

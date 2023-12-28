@@ -1,0 +1,79 @@
+[gd_scene load_steps=3 format=3 uid="uid://c38nou72fgfov"]
+
+[ext_resource type="Script" path="res://Scripts/MenuScripts/Video_menu.gd" id="1_nuxt8"]
+
+[sub_resource type="GDScript" id="GDScript_1gl7q"]
+script/source = "extends Label
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[node name="VideoMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nuxt8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -55.5
+offset_top = -40.0
+offset_right = 55.5
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Labels" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="FullScreen" type="Label" parent="HBoxContainer/Labels"]
+layout_mode = 2
+text = "FullScreen"
+
+[node name="VSync" type="Label" parent="HBoxContainer/Labels"]
+layout_mode = 2
+text = "VSync"
+script = SubResource("GDScript_1gl7q")
+
+[node name="Checks" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Fullscreen" type="CheckBox" parent="HBoxContainer/Checks"]
+layout_mode = 2
+
+[node name="VSync" type="CheckBox" parent="HBoxContainer/Checks"]
+layout_mode = 2
+
+[node name="BackFromVideo" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -22.5
+offset_top = -31.0
+offset_right = 22.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "Back"
+
+[connection signal="toggled" from="HBoxContainer/Checks/Fullscreen" to="." method="_on_fullscreen_toggled"]
+[connection signal="toggled" from="HBoxContainer/Checks/VSync" to="." method="_on_v_sync_toggled"]
+[connection signal="pressed" from="BackFromVideo" to="." method="_on_back_from_video_pressed"]
