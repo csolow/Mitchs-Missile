@@ -173,7 +173,6 @@ scale = Vector2(20, 20)
 texture = ExtResource("8_l3iuo")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-visible = false
 emitting = false
 amount = 50
 process_material = SubResource("ParticleProcessMaterial_k5a5r")

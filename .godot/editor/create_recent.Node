@@ -1,3 +1,6 @@
+RichTextLabel
+Control
+GPUParticles2D
 Sprite2D
 Gun
 Node2D
@@ -7,8 +10,6 @@ StaticBody2D
 PanelContainer
 Panel
 Container
-Control
 Button
 VBoxContainer
 Camera2D
-Node

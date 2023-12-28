@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ds4whkpi4ftql"]
+[gd_scene load_steps=14 format=3 uid="uid://ds4whkpi4ftql"]
 
 [ext_resource type="Script" path="res://Scripts/FireworkPrefab.gd" id="1_5cx8a"]
+[ext_resource type="Texture2D" uid="uid://0h1ynmlncp4q" path="res://Sprites/particles-single.png" id="2_1xu1f"]
 
 [sub_resource type="Gradient" id="Gradient_41x46"]
 
@@ -9,6 +10,52 @@ gradient = SubResource("Gradient_41x46")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nq7df"]
 size = Vector2(160, 20)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1gjor"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_5nsjs"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_b4ugn"]
+curve = SubResource("Curve_5nsjs")
+
+[sub_resource type="Gradient" id="Gradient_58qqn"]
+offsets = PackedFloat32Array(0.10241, 0.298193, 0.683735, 1)
+colors = PackedColorArray(0.964733, 0.18532, 0, 1, 0.850369, 0.452839, 0.275489, 1, 0.628882, 0.435038, 0.114094, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_spuv8"]
+gradient = SubResource("Gradient_58qqn")
+
+[sub_resource type="Curve" id="Curve_bg8nx"]
+_data = [Vector2(0.00555556, 0), 0.0, 0.0, 0, 0, Vector2(0.827778, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_p7ocg"]
+curve = SubResource("Curve_bg8nx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o1x3g"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 8.26
+inherit_velocity_ratio = 0.186
+angular_velocity_min = -10.0
+angular_velocity_max = 10.0
+gravity = Vector3(0, 200, 0)
+damping_max = 41.237
+scale_min = 0.03
+scale_max = 0.03
+color_ramp = SubResource("GradientTexture1D_spuv8")
+alpha_curve = SubResource("CurveTexture_b4ugn")
+emission_curve = SubResource("CurveTexture_p7ocg")
+hue_variation_min = -0.03
+hue_variation_max = 0.03
+anim_speed_max = 16.0
+turbulence_noise_scale = 1.2
 
 [node name="AnimatableBody2D" type="AnimatableBody2D"]
 sync_to_physics = false
@@ -35,6 +82,15 @@ shape = SubResource("RectangleShape2D_nq7df")
 
 [node name="RocketTip" type="Node2D" parent="."]
 position = Vector2(80, 0)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_1gjor")
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_o1x3g")
+texture = ExtResource("2_1xu1f")
+lifetime = 0.5
+preprocess = 36.29
+randomness = 0.45
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

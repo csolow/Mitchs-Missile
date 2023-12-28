@@ -15,10 +15,6 @@ run/main_scene="res://Scenes/menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
-[display]
-
-mouse_cursor/custom_image="res://Sprites/MouseScope.png"
-
 [input]
 
 right={
