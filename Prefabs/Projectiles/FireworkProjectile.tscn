@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://ds4whkpi4ftql"]
+[gd_scene load_steps=15 format=3 uid="uid://ds4whkpi4ftql"]
 
 [ext_resource type="Script" path="res://Scripts/FireworkPrefab.gd" id="1_5cx8a"]
 [ext_resource type="Texture2D" uid="uid://0h1ynmlncp4q" path="res://Sprites/particles-single.png" id="2_1xu1f"]
+[ext_resource type="PackedScene" uid="uid://qjsa7nxug78s" path="res://Prefabs/Explosions/ExplosionPrefab.tscn" id="2_sk4u4"]
 
 [sub_resource type="Gradient" id="Gradient_41x46"]
 
@@ -61,6 +62,7 @@ turbulence_noise_scale = 1.2
 sync_to_physics = false
 script = ExtResource("1_5cx8a")
 speed = 10
+explosion_to_be_spawned = ExtResource("2_sk4u4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(40, 0)

@@ -1,0 +1,78 @@
+[gd_scene load_steps=13 format=3 uid="uid://mtmkv2lh4kde"]
+
+[ext_resource type="Script" path="res://Scripts/ExplosionScript.gd" id="1_ti5pt"]
+[ext_resource type="Texture2D" uid="uid://cvpjnu11h8kmi" path="res://Sprites/Circle.png" id="2_4wm70"]
+[ext_resource type="Script" path="res://Scripts/FireworkParticles.gd" id="4_c5r4n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0ja1b"]
+radius = 103.0
+
+[sub_resource type="Curve" id="Curve_jm80x"]
+_data = [Vector2(0.336111, 0.677106), 0.0, 0.0, 0, 0, Vector2(0.683333, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1s3v2"]
+curve = SubResource("Curve_jm80x")
+
+[sub_resource type="Curve" id="Curve_i8mp7"]
+max_value = 10.0
+_data = [Vector2(0, 2.20842), 0.0, 0.0, 0, 0, Vector2(0.280556, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_1v61c"]
+curve = SubResource("Curve_i8mp7")
+
+[sub_resource type="Curve" id="Curve_oj0wp"]
+_data = [Vector2(0, 0.276998), 0.0, 0.0, 0, 0, Vector2(0.858333, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_dsyxq"]
+curve = SubResource("Curve_oj0wp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_126ou"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 300.0
+initial_velocity_max = 300.0
+gravity = Vector3(0, 100, 0)
+scale_min = 0.05
+scale_max = 0.05
+scale_curve = SubResource("CurveTexture_dsyxq")
+color = Color(0.843137, 0.403922, 0.454902, 1)
+alpha_curve = SubResource("CurveTexture_1s3v2")
+emission_curve = SubResource("CurveTexture_1v61c")
+hue_variation_min = -0.1
+turbulence_noise_strength = 0.5
+turbulence_noise_scale = 10.0
+turbulence_noise_speed = Vector3(0, -1, 0)
+turbulence_noise_speed_random = 0.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cnts8"]
+load_path = "res://.godot/imported/particles-single.png-fdf21335985cce44f02d233ccc6347dc.ctex"
+
+[node name="Explosion" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+collision_layer = 2
+script = ExtResource("1_ti5pt")
+
+[node name="Circle" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_4wm70")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0ja1b")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+scale = Vector2(0.5, 0.5)
+amount = 25
+process_material = SubResource("ParticleProcessMaterial_126ou")
+texture = SubResource("CompressedTexture2D_cnts8")
+explosiveness = 1.0
+fixed_fps = 25
+trail_lifetime = 0.65
+trail_sections = 2
+trail_section_subdivisions = 1
+script = ExtResource("4_c5r4n")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

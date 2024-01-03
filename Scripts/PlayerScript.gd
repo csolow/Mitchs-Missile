@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var acceleration = 5
 @export var friction = 5
 @export var jump_speed = -400
+@export var t = 0.1
 
 # Get the gravity from the project settings so you can sync with rigid body nodes.
 @onready var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -31,6 +32,10 @@ func _process(delta):
 	if Input.is_action_just_released("fire"):
 		if get_node("ArmPivot/FireworkGun").has_method("stop_fire"):
 			get_node("ArmPivot/FireworkGun").stop_fire()
+	
+	if Input.is_action_just_pressed("reload"):
+		if get_node("ArmPivot/FireworkGun").has_method("reload"):
+			get_node("ArmPivot/FireworkGun").reload()
 
 func _physics_process(delta):
 	var input_dir: Vector2 = get_input_direction()
@@ -43,11 +48,14 @@ func _physics_process(delta):
 		velocity.y = jump_speed	
 
 	# Moving
-	if input_dir != Vector2.ZERO:
+	if input_dir != Vector2.ZERO and is_on_floor():
 		accelerate(input_dir)
 	# Idle
 	elif input_dir == Vector2.ZERO and is_on_floor():
 		apply_friction()
+	# Moving in air
+	elif input_dir != Vector2.ZERO and not is_on_floor():
+		apply_air_resistance(delta, input_dir)
 	
 	move()
  
@@ -59,6 +67,10 @@ func accelerate(direction: Vector2):
  
 func apply_friction():
 	velocity.x = velocity.move_toward(Vector2.ZERO, friction).x
+
+func apply_air_resistance(delta: float, direction: Vector2):
+	velocity.x = velocity.move_toward(speed * direction, acceleration).lerp(Vector2.ZERO, delta*t).x
+
  
 func get_input_direction() -> Vector2:
 	var input_direction = Vector2.ZERO
@@ -86,4 +98,4 @@ func calculate_difference_vector (prop_vector):
 	return get_global_transform().get_origin() - prop_vector
 
 func add_knockback (knockback_speed):
-	velocity = arm_pivot_child.get_pivot_to_mouse().normalized() * -knockback_speed
+	velocity = arm_pivot_child.get_pivot_vector().normalized() * -knockback_speed

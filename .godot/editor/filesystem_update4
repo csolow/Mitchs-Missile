@@ -1,10 +1,18 @@
-<<<<<<< HEAD
-res://Scripts/PlayerScript.gd
-=======
 res://Scenes/menu.tscn
+res://Scripts/PlayerScript.gd
 res://Scripts/Shaders/distortion.gdshader
-res://Scenes/Audio_menu.tscn
+res://Scripts/Shaders/fireworkparticle.gdshader
+res://Prefabs/Explosions/ExplosionPrefab.tscn
+res://Prefabs/CooldownContainer.tscn
+res://Prefabs/Projectiles/FireworkProjectile.tscn
+res://Prefabs/Projectiles/AutomaticGun.tscn
 res://Scenes/main.tscn
-res://Scripts/MenuScripts/Audio_menu.gd
-res://Scripts/FireworkPrefab.gd
->>>>>>> b791dac1079f164ca214ec489e9e50ebae79818c
+res://Prefabs/Explosions/SmallExplosionPrefab.tscn
+res://Prefabs/Guns/FireworkGun.tscn
+res://Prefabs/Guns/AutomaticGun.tscn
+res://Scripts/GunScripts/GunClass.gd
+res://Scenes/TurretPivot.gd
+res://Scripts/Turret.gd
+res://Scripts/TurretPivot.gd
+res://Hand.gd
+res://Scripts/GunScripts/AutomaticGun.gd

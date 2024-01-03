@@ -163,14 +163,11 @@ metadata/_edit_use_anchors_ = true
 [node name="TurretPivot" type="Node2D" parent="Turret"]
 position = Vector2(0, -38)
 script = ExtResource("4_gdb2q")
-interpolation_speed = 2.0
 
 [node name="FireworkGun" parent="Turret/TurretPivot" groups=["Gun"] instance=ExtResource("3_crc6u")]
 bullet_spread = 10.0
-automatic = true
-fire_cooldown = 1.0
-reload_cooldown = 2.0
-ammo_amount = 6
+reload_cooldown = 0.2
+ammo_amount = 0
 knockback_speed = 400.0
 
 [node name="InstantiationPoint" type="Node2D" parent="Turret/TurretPivot"]

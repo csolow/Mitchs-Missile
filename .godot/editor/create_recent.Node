@@ -1,29 +1,14 @@
-<<<<<<< HEAD
+Node2D
 RichTextLabel
 Control
 GPUParticles2D
-=======
 Button
 VBoxContainer
->>>>>>> b791dac1079f164ca214ec489e9e50ebae79818c
 Sprite2D
 Gun
-Node2D
 Area2D
 CollisionShape2D
 StaticBody2D
-<<<<<<< HEAD
 PanelContainer
 Panel
 Container
-Button
-VBoxContainer
-Camera2D
-=======
-HSlider
-Label
-HBoxContainer
-Control
-CheckBox
-PanelContainer
->>>>>>> b791dac1079f164ca214ec489e9e50ebae79818c

@@ -7,7 +7,8 @@ extends AnimatableBody2D
 @export var cooldown = 1
 @onready var cooldown_counter = 0
 
-@onready var explosion_to_be_spawned = load("res://Prefabs/ExplosionPrefab.tscn")
+
+@export var explosion_to_be_spawned = load("res://Prefabs/Explosions/ExplosionPrefab.tscn")
 
 #=======
 @onready var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
