@@ -1,9 +1,10 @@
+Button
+VBoxContainer
+HBoxContainer
 Node2D
 RichTextLabel
 Control
 GPUParticles2D
-Button
-VBoxContainer
 Sprite2D
 Gun
 Area2D
@@ -11,4 +12,3 @@ CollisionShape2D
 StaticBody2D
 PanelContainer
 Panel
-Container

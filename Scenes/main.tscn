@@ -1,5 +1,6 @@
-[gd_scene load_steps=28 format=3 uid="uid://bqm2ngau8opnl"]
+[gd_scene load_steps=29 format=3 uid="uid://bqm2ngau8opnl"]
 
+[ext_resource type="Script" path="res://Scripts/MenuScripts/MenuHandler.gd" id="1_2ks7f"]
 [ext_resource type="Script" path="res://Scripts/PlayerScript.gd" id="1_bhu62"]
 [ext_resource type="Shader" path="res://Scripts/Shaders/MitchShader.gdshader" id="2_bouhw"]
 [ext_resource type="Script" path="res://Hand.gd" id="2_v85uw"]
@@ -83,6 +84,7 @@ turbulence_noise_speed = Vector3(0, -1, 0)
 turbulence_noise_speed_random = 0.0
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_2ks7f")
 
 [node name="Mitch" type="CharacterBody2D" parent="." groups=["Player"]]
 position = Vector2(217, -21)
@@ -145,7 +147,6 @@ position = Vector2(70, 0)
 [node name="Turret" type="CharacterBody2D" parent="." groups=["Enemy"]]
 position = Vector2(-403, -23)
 script = ExtResource("4_giht8")
-offset = 0.0
 
 [node name="Control" type="Control" parent="Turret"]
 visible = false
@@ -201,7 +202,6 @@ shape = SubResource("RectangleShape2D_684jq")
 [node name="Turret2" type="CharacterBody2D" parent="." groups=["Enemy"]]
 position = Vector2(-403, -182)
 script = ExtResource("4_giht8")
-offset = 0.5
 
 [node name="Control" type="Control" parent="Turret2"]
 visible = false
