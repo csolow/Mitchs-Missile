@@ -1,5 +1,6 @@
 res://Scenes/menu.tscn
 res://Scripts/PlayerScript.gd
+res://Scripts/Shaders/MitchShader.gdshader
 res://Scripts/Shaders/distortion.gdshader
 res://Scripts/Shaders/fireworkparticle.gdshader
 res://Prefabs/Explosions/ExplosionPrefab.tscn
@@ -10,9 +11,3 @@ res://Scenes/main.tscn
 res://Prefabs/Explosions/SmallExplosionPrefab.tscn
 res://Prefabs/Guns/FireworkGun.tscn
 res://Prefabs/Guns/AutomaticGun.tscn
-res://Scripts/GunScripts/GunClass.gd
-res://Scenes/TurretPivot.gd
-res://Scripts/Turret.gd
-res://Scripts/TurretPivot.gd
-res://Hand.gd
-res://Scripts/GunScripts/AutomaticGun.gd

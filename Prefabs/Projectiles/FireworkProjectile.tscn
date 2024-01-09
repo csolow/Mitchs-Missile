@@ -86,6 +86,7 @@ shape = SubResource("RectangleShape2D_nq7df")
 position = Vector2(80, 0)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+visible = false
 material = SubResource("CanvasItemMaterial_1gjor")
 amount = 20
 process_material = SubResource("ParticleProcessMaterial_o1x3g")

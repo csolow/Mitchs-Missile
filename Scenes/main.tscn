@@ -1,8 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://bqm2ngau8opnl"]
+[gd_scene load_steps=28 format=3 uid="uid://bqm2ngau8opnl"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerScript.gd" id="1_bhu62"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/MitchShader.gdshader" id="2_bouhw"]
 [ext_resource type="Script" path="res://Hand.gd" id="2_v85uw"]
 [ext_resource type="PackedScene" uid="uid://dhal011dq5cbw" path="res://Prefabs/Guns/AutomaticGun.tscn" id="3_crc6u"]
+[ext_resource type="Texture2D" uid="uid://dw8wvkgoro2xi" path="res://Sprites/Mitch/Mitch.png" id="3_mllhe"]
 [ext_resource type="Script" path="res://Scripts/CooldownContainer.gd" id="3_mo3i7"]
 [ext_resource type="Script" path="res://Scripts/TurretPivot.gd" id="4_gdb2q"]
 [ext_resource type="Script" path="res://Scripts/Turret.gd" id="4_giht8"]
@@ -13,13 +15,20 @@
 [ext_resource type="Script" path="res://Scripts/FireworkParticles.gd" id="10_mux8q"]
 [ext_resource type="Script" path="res://Scripts/FPS.gd" id="11_720r1"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o4l5k"]
+shader = ExtResource("2_bouhw")
+shader_parameter/key_color = Color(0, 1, 0, 1)
+shader_parameter/similarity = 0.4
+shader_parameter/smoothness = 0.08
+shader_parameter/spill = 0.1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_684jq"]
+size = Vector2(64, 64)
+
 [sub_resource type="Gradient" id="Gradient_ethal"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_nmsk5"]
 gradient = SubResource("Gradient_ethal")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_684jq"]
-size = Vector2(64, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vgkwu"]
 size = Vector2(64, 64)
@@ -84,9 +93,11 @@ friction = 50
 t = 10.0
 
 [node name="Sprite2D2" type="Sprite2D" parent="Mitch"]
-position = Vector2(0.4, 0.488007)
-scale = Vector2(0.7, 1.734)
-texture = SubResource("GradientTexture2D_nmsk5")
+texture_filter = 2
+material = SubResource("ShaderMaterial_o4l5k")
+position = Vector2(3.00001, 8)
+scale = Vector2(0.280172, 0.25)
+texture = ExtResource("3_mllhe")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Mitch"]
 position = Vector2(0.4, 0.488007)
@@ -123,7 +134,7 @@ script = ExtResource("2_v85uw")
 [node name="FireworkGun" parent="Mitch/ArmPivot" groups=["Gun"] instance=ExtResource("3_crc6u")]
 bullet_spread = 10.0
 reload_cooldown = 0.2
-ammo_amount = 7
+ammo_amount = 1000
 knockback_speed = 400.0
 
 [node name="InstantiationPoint" type="Node2D" parent="Mitch/ArmPivot"]
@@ -134,6 +145,7 @@ position = Vector2(70, 0)
 [node name="Turret" type="CharacterBody2D" parent="." groups=["Enemy"]]
 position = Vector2(-403, -23)
 script = ExtResource("4_giht8")
+offset = 0.0
 
 [node name="Control" type="Control" parent="Turret"]
 visible = false
@@ -182,6 +194,62 @@ scale = Vector2(0.7, 0.6936)
 texture = SubResource("GradientTexture2D_nmsk5")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Turret"]
+position = Vector2(0.399994, -44.8048)
+scale = Vector2(0.7, 0.6936)
+shape = SubResource("RectangleShape2D_684jq")
+
+[node name="Turret2" type="CharacterBody2D" parent="." groups=["Enemy"]]
+position = Vector2(-403, -182)
+script = ExtResource("4_giht8")
+offset = 0.5
+
+[node name="Control" type="Control" parent="Turret2"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -22.0
+offset_top = -82.0
+offset_right = 18.0
+offset_bottom = -42.0
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Turret2/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.175
+anchor_top = -0.05
+anchor_right = -0.175
+anchor_bottom = -0.05
+offset_left = 7.0
+offset_top = 2.0
+offset_right = 61.0
+offset_bottom = 34.0
+scale = Vector2(1.14149, 1.1367)
+text = "Mitch"
+metadata/_edit_use_anchors_ = true
+
+[node name="TurretPivot" type="Node2D" parent="Turret2"]
+position = Vector2(0, -38)
+script = ExtResource("4_gdb2q")
+interpolation_speed = 2.0
+
+[node name="FireworkGun" parent="Turret2/TurretPivot" groups=["Gun"] instance=ExtResource("3_crc6u")]
+bullet_spread = 10.0
+automatic = true
+fire_cooldown = 1.0
+reload_cooldown = 2.0
+ammo_amount = 6
+knockback_speed = 400.0
+
+[node name="InstantiationPoint" type="Node2D" parent="Turret2/TurretPivot"]
+position = Vector2(70, 0)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Turret2"]
+position = Vector2(0.399994, -44.8048)
+scale = Vector2(0.7, 0.6936)
+texture = SubResource("GradientTexture2D_nmsk5")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Turret2"]
 position = Vector2(0.399994, -44.8048)
 scale = Vector2(0.7, 0.6936)
 shape = SubResource("RectangleShape2D_684jq")

@@ -1,6 +1,7 @@
 extends CharacterBody2D
 var cooldown = 2.0 
 var cooldown_counter = 0.0 
+@export var offset = 2.0
 
 @onready var FireworkGun = get_node("TurretPivot/FireworkGun")
 
@@ -10,6 +11,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
 	cooldown = get_node("TurretPivot/FireworkGun").fire_cooldown
+	cooldown_counter -= offset
 
 func _process(delta):
 	cooldown_counter += delta
