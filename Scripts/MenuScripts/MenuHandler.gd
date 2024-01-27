@@ -2,7 +2,7 @@ extends Node2D
 class_name MenuHandler
 
 var showing_pause_menu = false
-@onready var root = get_tree().get_node("Main")
+#@onready var root = get_tree().get_node("Main")
 
 
 # Called when the node enters the scene tree for the first time.

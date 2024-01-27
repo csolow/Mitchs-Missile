@@ -12,3 +12,4 @@ res://Prefabs/Explosions/SmallExplosionPrefab.tscn
 res://Prefabs/Guns/FireworkGun.tscn
 res://Prefabs/Guns/AutomaticGun.tscn
 res://Scripts/FireworkPrefab.gd
+res://Scripts/MenuScripts/MenuHandler.gd
