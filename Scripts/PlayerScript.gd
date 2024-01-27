@@ -4,6 +4,8 @@ extends CharacterBody2D
 @export var friction = 5
 @export var jump_speed = -400
 @export var t = 0.1
+@export var collision_friction = 1.0
+@export var rocket_speed = 70.0
 
 # Get the gravity from the project settings so you can sync with rigid body nodes.
 @onready var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -19,15 +21,21 @@ extends CharacterBody2D
 @onready var cooldown = cooldown_start
 @onready var cooldown_counter = cooldown
 
+#Handle override movement
+@onready var temp_velocity = Vector2.ZERO
+@onready var gravity_vector = Vector2.ZERO
+var override_movement = false
 
 func _process(delta):
 	#Handle Cooldown
 	cooldown_counter += delta
 	
 	#Handle firing
-	if Input.is_action_just_pressed("fire"):
+	
+	if Input.is_action_just_pressed("fire") and not override_movement:
 		if get_node("ArmPivot/FireworkGun").has_method("start_fire"):
 			get_node("ArmPivot/FireworkGun").start_fire()
+	
 			
 	if Input.is_action_just_released("fire"):
 		if get_node("ArmPivot/FireworkGun").has_method("stop_fire"):
@@ -38,14 +46,15 @@ func _process(delta):
 			get_node("ArmPivot/FireworkGun").reload()
 
 func _physics_process(delta):
+	temp_velocity = velocity
 	var input_dir: Vector2 = get_input_direction()
 	
 	# Add the gravity.
-	velocity.y += gravity * delta
+	gravity_vector.y = gravity * delta
 
 	# Handle Jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = jump_speed	
+		temp_velocity.y = jump_speed	
 
 	# Moving
 	if input_dir != Vector2.ZERO and is_on_floor():
@@ -54,22 +63,33 @@ func _physics_process(delta):
 	elif input_dir == Vector2.ZERO and is_on_floor():
 		apply_friction()
 	# Moving in air
-	elif input_dir != Vector2.ZERO and not is_on_floor():
-		apply_air_resistance(delta, input_dir)
+	#elif input_dir != Vector2.ZERO and not is_on_floor():
+		#apply_air_resistance(delta, input_dir)
 	
-	move()
+	if not override_movement:
+		velocity = temp_velocity
+	velocity += gravity_vector
+	
+	move(delta)
  
-func move():
-	move_and_slide()
- 
+func move(delta):
+	if not override_movement:
+		move_and_slide()
+	else: 
+		var collision_object = move_and_collide(velocity*delta)
+		if collision_object and collision_object.get_collider().is_in_group("Ground"):
+			velocity = velocity.bounce(collision_object.get_normal()) * collision_friction
+	
+
+
 func accelerate(direction: Vector2):
-	velocity.x = velocity.move_toward(speed * direction, acceleration).x
+	temp_velocity.x = temp_velocity.move_toward(speed * direction, acceleration).x
  
 func apply_friction():
-	velocity.x = velocity.move_toward(Vector2.ZERO, friction).x
+	temp_velocity.x = temp_velocity.move_toward(Vector2.ZERO, friction).x
 
 func apply_air_resistance(delta: float, direction: Vector2):
-	velocity.x = velocity.move_toward(speed * direction, acceleration).lerp(Vector2.ZERO, delta*t).x
+	temp_velocity.x = temp_velocity.move_toward(speed * direction, acceleration).lerp(Vector2.ZERO, delta*t).x
 
  
 func get_input_direction() -> Vector2:
@@ -81,21 +101,30 @@ func get_input_direction() -> Vector2:
 	return input_direction
 
 func _on_body_entered(body):
-	if body.is_in_group("Explosion"):
-		print("Collision")
-		velocity = body.get_global_transform().get_origin() - get_global_transform().get_origin()
-		pass
+	#if body.is_in_group("Explosion"):
+		##print("Collision")
+		#temp_velocity = body.get_global_transform().get_origin() - get_global_transform().get_origin()
+	pass
 
 func on_explosion_body_entered(body):
 	var new_velocity = calculate_difference_vector(body.get_global_transform().get_origin())
-	velocity = new_velocity.normalized() * 750
+	temp_velocity = new_velocity.normalized() * 750
 	cooldown = 1
-	print(body)
-	print(new_velocity.normalized())
 	pass # Replace with function body.
 
 func calculate_difference_vector (prop_vector):
 	return get_global_transform().get_origin() - prop_vector
 
 func add_knockback (knockback_speed):
-	velocity = arm_pivot_child.get_pivot_vector().normalized() * -knockback_speed
+	if not override_movement:
+		velocity = arm_pivot_child.get_pivot_vector().normalized() * -knockback_speed
+
+func hit_by_rocket (knockback_vector):
+	velocity = knockback_vector.normalized() * rocket_speed
+	override_movement = true
+	stop_override_movement()
+	pass
+
+func stop_override_movement ():
+	await get_tree().create_timer(1.0).timeout
+	override_movement = false

@@ -61,7 +61,7 @@ turbulence_noise_scale = 1.2
 [node name="AnimatableBody2D" type="AnimatableBody2D"]
 sync_to_physics = false
 script = ExtResource("1_5cx8a")
-speed = 15
+speed = 10
 free_cooldown = 0.1
 explosion_to_be_spawned = ExtResource("2_sk4u4")
 

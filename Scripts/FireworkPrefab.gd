@@ -4,9 +4,11 @@ extends AnimatableBody2D
 
 #<<<<<<< Updated upstream
 #Cooldown variables
-@export var cooldown = 1
+@export var cooldown = 1.0
 @onready var cooldown_counter = 0
 
+@export var free_cooldown = 1.0  
+var exploded = false
 
 @export var explosion_to_be_spawned = load("res://Prefabs/Explosions/ExplosionPrefab.tscn")
 
@@ -28,25 +30,40 @@ func _physics_process(delta):
 func _process(delta):
 	cooldown_counter += delta
 	if cooldown_counter >= cooldown:
-		explode()
+		
+		start_explosion()
 	pass
 
 
 func set_angle(angle):
 	transform = global_transform.rotated(angle)
-	print(global_transform.get_origin())
 
 func explode():
+	exploded = true
+
+	
+	
 	var parent_node = get_tree().get_root().get_node("Main")
 	var explosion_instance = explosion_to_be_spawned.instantiate()
-	explosion_instance.transform = explosion_instance.transform.translated(get_node("RocketTip").global_transform.get_origin()) 
 	#Add instance to scene
-	parent_node.call_deferred("add_child", explosion_instance)
-	queue_free()
 
+	explosion_instance.transform = explosion_instance.transform.translated(get_node("RocketTip").global_transform.get_origin()) 
+	parent_node.call_deferred("add_child", explosion_instance)
+	
+	queue_free()
+	
+func start_explosion():
+	if exploded:
+		return
+	await explode()
 
 
 func _on_area_2d_body_entered(body):
-	explode()
+	if body.is_in_group("Player"):
+		if body.has_method("hit_by_rocket"):
+			body.hit_by_rocket(DirectionVector.normalized() * speed)
+		#await get_tree().create_timer(free_cooldown).timeout
+		pass
+	await start_explosion()
 	pass # Replace with function body.
 

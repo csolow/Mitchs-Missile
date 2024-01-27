@@ -30,6 +30,9 @@ size = Vector2(64, 64)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_nmsk5"]
 gradient = SubResource("Gradient_ethal")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vgkwu"]
+size = Vector2(64, 64)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iowwy"]
 shader = ExtResource("7_d3e8m")
 shader_parameter/strength = 0.055
@@ -79,9 +82,6 @@ turbulence_noise_scale = 10.0
 turbulence_noise_speed = Vector3(0, -1, 0)
 turbulence_noise_speed_random = 0.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vgkwu"]
-size = Vector2(64, 64)
-
 [node name="Main" type="Node2D"]
 
 [node name="Mitch" type="CharacterBody2D" parent="." groups=["Player"]]
@@ -90,9 +90,9 @@ script = ExtResource("1_bhu62")
 speed = 300
 acceleration = 250
 friction = 50
+jump_speed = null
 t = 10.0
-collision_friction = 0.5
-rocket_speed = 1750.0
+cooldown_start = null
 
 [node name="Sprite2D2" type="Sprite2D" parent="Mitch"]
 texture_filter = 2
@@ -258,6 +258,17 @@ position = Vector2(0.399994, -44.8048)
 scale = Vector2(0.7, 0.6936)
 shape = SubResource("RectangleShape2D_684jq")
 
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(0, 540)
+scale = Vector2(30.05, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground"]
+texture = SubResource("GradientTexture2D_nmsk5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(0, 0.000244141)
+shape = SubResource("RectangleShape2D_vgkwu")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
 
@@ -316,39 +327,3 @@ offset_top = -287.0
 offset_right = 536.0
 offset_bottom = -247.0
 script = ExtResource("11_720r1")
-
-[node name="Ground container" type="Node2D" parent="."]
-
-[node name="Ground3" type="StaticBody2D" parent="Ground container" groups=["Ground"]]
-position = Vector2(-1127, -209)
-rotation = 3.14159
-scale = Vector2(3.20322, -26.6239)
-
-[node name="Sprite2D" type="Sprite2D" parent="Ground container/Ground3"]
-texture = SubResource("GradientTexture2D_nmsk5")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground container/Ground3"]
-position = Vector2(0, 0.000244141)
-shape = SubResource("RectangleShape2D_vgkwu")
-
-[node name="Ground" type="StaticBody2D" parent="Ground container" groups=["Ground"]]
-position = Vector2(118, 532)
-scale = Vector2(30.05, 1)
-
-[node name="Sprite2D" type="Sprite2D" parent="Ground container/Ground"]
-texture = SubResource("GradientTexture2D_nmsk5")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground container/Ground"]
-position = Vector2(0, 0.000244141)
-shape = SubResource("RectangleShape2D_vgkwu")
-
-[node name="Ground2" type="StaticBody2D" parent="Ground container" groups=["Ground"]]
-position = Vector2(1069, -157)
-scale = Vector2(3.04999, 26.731)
-
-[node name="Sprite2D" type="Sprite2D" parent="Ground container/Ground2"]
-texture = SubResource("GradientTexture2D_nmsk5")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground container/Ground2"]
-position = Vector2(0, 0.000244141)
-shape = SubResource("RectangleShape2D_vgkwu")
