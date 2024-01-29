@@ -23,7 +23,7 @@ var infinite_ammo = false
 #Declare from guns
 var rocket_prefab
 
-@onready var instantiation_point_object = get_parent().get_node("InstantiationPoint")
+@onready var instantiation_point_object = get_node("InstantiationPoint")
 @onready var arm_pivot_child = get_parent()
 @onready var player_object = get_parent().get_parent()
 

@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends CharacterClass2D
 @export var speed = 5
 @export var acceleration = 5
 @export var friction = 5
@@ -12,7 +12,7 @@ extends CharacterBody2D
 
 #
 @onready var rocket_to_be_spawned = load("res://Prefabs/Projectiles/FireworkProjectile.tscn")
-@onready var instantiation_point_object = get_node("ArmPivot/InstantiationPoint")
+@onready var instantiation_point_object = get_node("ArmPivot/FireworkGun/InstantiationPoint")
 @onready var arm_pivot_child = get_node("ArmPivot") 
 @onready var FireworkGun = get_node("ArmPivot/FireworkGun") 
 
@@ -26,7 +26,11 @@ extends CharacterBody2D
 @onready var gravity_vector = Vector2.ZERO
 var override_movement = false
 
-func _process(delta):
+#Damage Variables
+@export var collision_damage_factor = 0.005 
+@export var rocket_damage_factor = 1.0
+
+func character_process(delta):
 	#Handle Cooldown
 	cooldown_counter += delta
 	
@@ -45,7 +49,7 @@ func _process(delta):
 		if get_node("ArmPivot/FireworkGun").has_method("reload"):
 			get_node("ArmPivot/FireworkGun").reload()
 
-func _physics_process(delta):
+func character_physics_process(delta):
 	temp_velocity = velocity
 	var input_dir: Vector2 = get_input_direction()
 	
@@ -54,7 +58,7 @@ func _physics_process(delta):
 
 	# Handle Jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
-		temp_velocity.y = jump_speed	
+		temp_velocity.y = jump_speed
 
 	# Moving
 	if input_dir != Vector2.ZERO and is_on_floor():
@@ -79,6 +83,7 @@ func move(delta):
 		var collision_object = move_and_collide(velocity*delta)
 		if collision_object and collision_object.get_collider().is_in_group("Ground"):
 			velocity = velocity.bounce(collision_object.get_normal()) * collision_friction
+			take_damage(velocity.length()*collision_damage_factor)
 	
 
 
@@ -101,9 +106,7 @@ func get_input_direction() -> Vector2:
 	return input_direction
 
 func _on_body_entered(body):
-	#if body.is_in_group("Explosion"):
-		##print("Collision")
-		#temp_velocity = body.get_global_transform().get_origin() - get_global_transform().get_origin()
+
 	pass
 
 func on_explosion_body_entered(body):
@@ -120,6 +123,7 @@ func add_knockback (knockback_speed):
 		velocity = arm_pivot_child.get_pivot_vector().normalized() * -knockback_speed
 
 func hit_by_rocket (knockback_vector):
+	take_damage(knockback_vector.length() * rocket_damage_factor)
 	velocity = knockback_vector.normalized() * rocket_speed
 	override_movement = true
 	stop_override_movement()
@@ -128,3 +132,5 @@ func hit_by_rocket (knockback_vector):
 func stop_override_movement ():
 	await get_tree().create_timer(1.0).timeout
 	override_movement = false
+
+

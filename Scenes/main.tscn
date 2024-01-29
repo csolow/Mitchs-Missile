@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bqm2ngau8opnl"]
+[gd_scene load_steps=34 format=3 uid="uid://bqm2ngau8opnl"]
 
 [ext_resource type="Script" path="res://Scripts/MenuScripts/MenuHandler.gd" id="1_2ks7f"]
 [ext_resource type="Script" path="res://Scripts/PlayerScript.gd" id="1_bhu62"]
@@ -9,12 +9,13 @@
 [ext_resource type="Script" path="res://Scripts/CooldownContainer.gd" id="3_mo3i7"]
 [ext_resource type="Script" path="res://Scripts/TurretPivot.gd" id="4_gdb2q"]
 [ext_resource type="Script" path="res://Scripts/Turret.gd" id="4_giht8"]
-[ext_resource type="PackedScene" uid="uid://ckb3k1togm4qx" path="res://Prefabs/CooldownContainer.tscn" id="4_oyk4o"]
 [ext_resource type="Shader" path="res://Scripts/Shaders/distortion.gdshader" id="7_d3e8m"]
 [ext_resource type="Texture2D" uid="uid://c6jpe33hy4qpa" path="res://icon.svg" id="8_l3iuo"]
 [ext_resource type="Texture2D" uid="uid://0h1ynmlncp4q" path="res://Sprites/particles-single.png" id="9_a1bay"]
+[ext_resource type="Script" path="res://Scenes/CameraFollower.gd" id="9_qgoee"]
 [ext_resource type="Script" path="res://Scripts/FireworkParticles.gd" id="10_mux8q"]
 [ext_resource type="Script" path="res://Scripts/FPS.gd" id="11_720r1"]
+[ext_resource type="Script" path="res://Scripts/HealthBar.gd" id="11_hmr5p"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o4l5k"]
 shader = ExtResource("2_bouhw")
@@ -30,6 +31,32 @@ size = Vector2(64, 64)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_nmsk5"]
 gradient = SubResource("Gradient_ethal")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b4420"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yddch"]
+bg_color = Color(0, 0.705882, 0.0941176, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oks05"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2uyos"]
+bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iowwy"]
 shader = ExtResource("7_d3e8m")
@@ -87,7 +114,7 @@ size = Vector2(64, 64)
 script = ExtResource("1_2ks7f")
 
 [node name="Mitch" type="CharacterBody2D" parent="." groups=["Player"]]
-position = Vector2(336, -21)
+position = Vector2(0, -3)
 script = ExtResource("1_bhu62")
 speed = 300
 acceleration = 250
@@ -140,16 +167,16 @@ bullet_spread = 10.0
 automatic = true
 fire_cooldown = 0.2
 reload_cooldown = 0.2
-ammo_amount = 1000
-knockback_speed = 400.0
+ammo_amount = 5
+knockback_speed = 600.0
 
-[node name="InstantiationPoint" type="Node2D" parent="Mitch/ArmPivot"]
+[node name="InstantiationPoint" type="Node2D" parent="Mitch/ArmPivot/FireworkGun"]
 position = Vector2(70, 0)
 
 [node name="Node2D" type="Node2D" parent="Mitch"]
 
 [node name="Turret" type="CharacterBody2D" parent="." groups=["Enemy"]]
-position = Vector2(-403, -23)
+position = Vector2(-511, -95)
 script = ExtResource("4_giht8")
 
 [node name="Control" type="Control" parent="Turret"]
@@ -190,7 +217,7 @@ reload_cooldown = 2.0
 ammo_amount = 6
 knockback_speed = 400.0
 
-[node name="InstantiationPoint" type="Node2D" parent="Turret/TurretPivot"]
+[node name="InstantiationPoint" type="Node2D" parent="Turret/TurretPivot/FireworkGun"]
 position = Vector2(70, 0)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Turret"]
@@ -204,7 +231,7 @@ scale = Vector2(0.7, 0.6936)
 shape = SubResource("RectangleShape2D_684jq")
 
 [node name="Turret2" type="CharacterBody2D" parent="." groups=["Enemy"]]
-position = Vector2(-403, -182)
+position = Vector2(730, -92)
 script = ExtResource("4_giht8")
 
 [node name="Control" type="Control" parent="Turret2"]
@@ -245,7 +272,7 @@ reload_cooldown = 2.0
 ammo_amount = 6
 knockback_speed = 400.0
 
-[node name="InstantiationPoint" type="Node2D" parent="Turret2/TurretPivot"]
+[node name="InstantiationPoint" type="Node2D" parent="Turret2/TurretPivot/FireworkGun"]
 position = Vector2(70, 0)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Turret2"]
@@ -260,15 +287,32 @@ shape = SubResource("RectangleShape2D_684jq")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
+script = ExtResource("9_qgoee")
 
-[node name="Overlay" type="Control" parent="."]
-visible = false
+[node name="Overlay" type="Control" parent="Camera2D"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
 
-[node name="Container" type="Container" parent="Overlay"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Camera2D/Overlay"]
+layout_mode = 0
+offset_left = 496.0
+offset_top = -287.0
+offset_right = 536.0
+offset_bottom = -247.0
+script = ExtResource("11_720r1")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Camera2D/Overlay"]
+layout_mode = 0
+offset_left = 805.0
+offset_top = -623.0
+offset_right = 845.0
+offset_bottom = -583.0
+script = ExtResource("11_720r1")
+
+[node name="Container" type="Container" parent="Camera2D/Overlay"]
 layout_mode = 0
 offset_left = -563.0
 offset_top = -301.0
@@ -276,11 +320,32 @@ offset_right = -523.0
 offset_bottom = -261.0
 script = ExtResource("3_mo3i7")
 
-[node name="Panel" type="Panel" parent="Overlay/Container"]
+[node name="Panel" type="Panel" parent="Camera2D/Overlay/Container"]
 layout_mode = 2
 
-[node name="Control" parent="Overlay" instance=ExtResource("4_oyk4o")]
-layout_mode = 1
+[node name="HealthBar" type="ProgressBar" parent="Camera2D/Overlay"]
+layout_mode = 0
+offset_left = -950.0
+offset_top = -581.0
+offset_right = -350.0
+offset_bottom = -551.0
+theme_override_styles/background = SubResource("StyleBoxFlat_b4420")
+theme_override_styles/fill = SubResource("StyleBoxFlat_yddch")
+value = 60.0
+script = ExtResource("11_hmr5p")
+
+[node name="DamageBar" type="ProgressBar" parent="Camera2D/Overlay/HealthBar"]
+z_index = -1
+layout_mode = 0
+offset_right = 600.0
+offset_bottom = 30.0
+theme_override_styles/background = SubResource("StyleBoxFlat_oks05")
+theme_override_styles/fill = SubResource("StyleBoxFlat_2uyos")
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="Camera2D/Overlay/HealthBar"]
+wait_time = 0.4
+one_shot = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
@@ -304,18 +369,16 @@ trail_sections = 2
 script = ExtResource("10_mux8q")
 
 [node name="Control" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
-layout_mode = 0
-offset_left = 496.0
-offset_top = -287.0
-offset_right = 536.0
-offset_bottom = -247.0
-script = ExtResource("11_720r1")
+[node name="Control" type="Control" parent="Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Ground container" type="Node2D" parent="."]
 
@@ -332,7 +395,7 @@ position = Vector2(0, 0.000244141)
 shape = SubResource("RectangleShape2D_vgkwu")
 
 [node name="Ground" type="StaticBody2D" parent="Ground container" groups=["Ground"]]
-position = Vector2(118, 532)
+position = Vector2(6.00001, 102)
 scale = Vector2(30.05, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="Ground container/Ground"]
@@ -352,3 +415,5 @@ texture = SubResource("GradientTexture2D_nmsk5")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground container/Ground2"]
 position = Vector2(0, 0.000244141)
 shape = SubResource("RectangleShape2D_vgkwu")
+
+[connection signal="timeout" from="Camera2D/Overlay/HealthBar/Timer" to="Camera2D/Overlay/HealthBar" method="_on_timer_timeout"]
