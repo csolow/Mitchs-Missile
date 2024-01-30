@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://cpsjgw2gtsvgy"]
+
+[ext_resource type="Script" path="res://Scripts/Turret.gd" id="1_aqiib"]
+[ext_resource type="Script" path="res://Scripts/TurretPivot.gd" id="2_l58yg"]
+[ext_resource type="PackedScene" uid="uid://dhal011dq5cbw" path="res://Prefabs/Guns/AutomaticGun.tscn" id="3_iyuil"]
+
+[sub_resource type="Gradient" id="Gradient_ethal"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nmsk5"]
+gradient = SubResource("Gradient_ethal")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_684jq"]
+size = Vector2(64, 64)
+
+[node name="Turret" type="CharacterBody2D" groups=["Enemy"]]
+position = Vector2(-511, -95)
+script = ExtResource("1_aqiib")
+
+[node name="Control" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -22.0
+offset_top = -82.0
+offset_right = 18.0
+offset_bottom = -42.0
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.175
+anchor_top = -0.05
+anchor_right = -0.175
+anchor_bottom = -0.05
+offset_left = 7.0
+offset_top = 2.0
+offset_right = 61.0
+offset_bottom = 34.0
+scale = Vector2(1.14149, 1.1367)
+text = "Mitch"
+metadata/_edit_use_anchors_ = true
+
+[node name="TurretPivot" type="Node2D" parent="."]
+position = Vector2(0, -38)
+script = ExtResource("2_l58yg")
+interpolation_speed = 2.0
+
+[node name="FireworkGun" parent="TurretPivot" groups=["Gun"] instance=ExtResource("3_iyuil")]
+bullet_spread = 10.0
+automatic = true
+fire_cooldown = 1.0
+reload_cooldown = 2.0
+ammo_amount = 6
+knockback_speed = 400.0
+
+[node name="InstantiationPoint" type="Node2D" parent="TurretPivot/FireworkGun"]
+position = Vector2(70, 0)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0.399994, -44.8048)
+scale = Vector2(0.7, 0.6936)
+texture = SubResource("GradientTexture2D_nmsk5")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0.399994, -44.8048)
+scale = Vector2(0.7, 0.6936)
+shape = SubResource("RectangleShape2D_684jq")

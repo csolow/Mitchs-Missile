@@ -11,6 +11,36 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nkna7")
 
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.51
+anchor_top = 0.448
+anchor_right = 0.51
+anchor_bottom = 0.448
+offset_left = -23.5201
+offset_top = -11.304
+offset_right = 23.4799
+offset_bottom = 11.696
+grow_horizontal = 2
+grow_vertical = 2
+text = "Name"
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = -15.0
+offset_right = 126.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_top = NodePath("../Menu/QuitButton")
+
 [node name="Menu" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 7
@@ -19,14 +49,17 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -98.0
-offset_top = -178.0
+offset_top = -206.0
 offset_right = 121.0
 grow_horizontal = 2
 grow_vertical = 0
 
+[node name="StartGame" type="Button" parent="Menu"]
+layout_mode = 2
+text = "Start Multiplayer Game"
+
 [node name="HostButton" type="Button" parent="Menu"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../QuitButton")
 text = "Host"
 
 [node name="JoinButton" type="Button" parent="Menu"]
@@ -43,9 +76,12 @@ text = "Options"
 
 [node name="QuitButton" type="Button" parent="Menu"]
 layout_mode = 2
-focus_neighbor_bottom = NodePath("../HostButton")
+focus_neighbor_bottom = NodePath("../../LineEdit")
 text = "Quit"
 
+[connection signal="button_down" from="Menu/StartGame" to="." method="_on_start_game_button_down"]
+[connection signal="button_down" from="Menu/HostButton" to="." method="_on_host_button_button_down"]
+[connection signal="button_down" from="Menu/JoinButton" to="." method="_on_join_button_button_down"]
 [connection signal="pressed" from="Menu/TrainingButton" to="." method="_on_training_button_pressed"]
 [connection signal="pressed" from="Menu/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="Menu/QuitButton" to="." method="_on_quit_button_pressed"]

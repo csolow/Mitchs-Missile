@@ -46,6 +46,7 @@ size_flags_horizontal = 3
 
 [node name="Master" type="HSlider" parent="HBoxContainer/Sliders"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../../../BackFromAudio")
 
 [node name="Music" type="HSlider" parent="HBoxContainer/Sliders"]
 layout_mode = 2
@@ -65,6 +66,7 @@ offset_top = -31.0
 offset_right = 22.5
 grow_horizontal = 2
 grow_vertical = 0
+focus_neighbor_bottom = NodePath("../HBoxContainer/Sliders/Master")
 text = "Back"
 
 [connection signal="value_changed" from="HBoxContainer/Sliders/Master" to="." method="_on_master_value_changed"]

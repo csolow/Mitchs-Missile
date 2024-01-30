@@ -1,0 +1,79 @@
+[gd_scene load_steps=8 format=3 uid="uid://i333cl0tlmgl"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerScript.gd" id="1_mc6b4"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/MitchShader.gdshader" id="2_yiveg"]
+[ext_resource type="Texture2D" uid="uid://dw8wvkgoro2xi" path="res://Sprites/Mitch/Mitch.png" id="3_fk7t7"]
+[ext_resource type="Script" path="res://Hand.gd" id="4_by880"]
+[ext_resource type="PackedScene" uid="uid://dhal011dq5cbw" path="res://Prefabs/Guns/AutomaticGun.tscn" id="5_3g167"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o4l5k"]
+shader = ExtResource("2_yiveg")
+shader_parameter/key_color = Color(0, 1, 0, 1)
+shader_parameter/similarity = 0.4
+shader_parameter/smoothness = 0.08
+shader_parameter/spill = 0.1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_684jq"]
+size = Vector2(64, 64)
+
+[node name="Mitch" type="CharacterBody2D" groups=["Player"]]
+position = Vector2(0, -3)
+script = ExtResource("1_mc6b4")
+speed = 300
+acceleration = 250
+friction = 50
+t = 10.0
+collision_friction = 0.5
+rocket_speed = 1750.0
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture_filter = 2
+material = SubResource("ShaderMaterial_o4l5k")
+position = Vector2(3.00001, 8)
+scale = Vector2(0.280172, 0.25)
+texture = ExtResource("3_fk7t7")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0.4, 0.488007)
+scale = Vector2(0.7, 1.734)
+shape = SubResource("RectangleShape2D_684jq")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -22.0
+offset_top = -82.0
+offset_right = 18.0
+offset_bottom = -42.0
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.175
+anchor_top = -0.05
+anchor_right = -0.175
+anchor_bottom = -0.05
+offset_left = 7.0
+offset_top = 2.0
+offset_right = 61.0
+offset_bottom = 34.0
+scale = Vector2(1.14149, 1.1367)
+text = "Mitch"
+metadata/_edit_use_anchors_ = true
+
+[node name="ArmPivot" type="Node2D" parent="."]
+script = ExtResource("4_by880")
+
+[node name="FireworkGun" parent="ArmPivot" groups=["Gun"] instance=ExtResource("5_3g167")]
+bullet_spread = 10.0
+automatic = true
+fire_cooldown = 0.2
+reload_cooldown = 0.2
+ammo_amount = 5
+knockback_speed = 600.0
+
+[node name="InstantiationPoint" type="Node2D" parent="ArmPivot/FireworkGun"]
+position = Vector2(70, 0)
+
+[node name="Node2D" type="Node2D" parent="."]

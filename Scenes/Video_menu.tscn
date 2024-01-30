@@ -56,6 +56,7 @@ layout_mode = 2
 
 [node name="Fullscreen" type="CheckBox" parent="HBoxContainer/Checks"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../../../BackFromVideo")
 
 [node name="VSync" type="CheckBox" parent="HBoxContainer/Checks"]
 layout_mode = 2
@@ -72,6 +73,7 @@ offset_top = -31.0
 offset_right = 22.5
 grow_horizontal = 2
 grow_vertical = 0
+focus_neighbor_bottom = NodePath("../HBoxContainer/Checks/Fullscreen")
 text = "Back"
 
 [connection signal="toggled" from="HBoxContainer/Checks/Fullscreen" to="." method="_on_fullscreen_toggled"]

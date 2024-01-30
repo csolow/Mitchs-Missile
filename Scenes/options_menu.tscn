@@ -27,6 +27,7 @@ grow_vertical = 2
 
 [node name="Video" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../../Back")
 text = "Video"
 
 [node name="Audio" type="Button" parent="VBoxContainer"]
@@ -45,6 +46,7 @@ offset_top = -31.0
 offset_right = 22.5
 grow_horizontal = 2
 grow_vertical = 0
+focus_neighbor_bottom = NodePath("../VBoxContainer/Video")
 text = "Back"
 
 [connection signal="pressed" from="VBoxContainer/Video" to="." method="_on_video_pressed"]
