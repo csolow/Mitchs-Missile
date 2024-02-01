@@ -1,10 +1,12 @@
+res://Prefabs/Guns
+res://Scripts/Weapons/GunScripts
+res://Prefabs/Projectiles
+res://Resources
 res://Prefabs/Characters
 res://Scripts
 res://Scripts/CharacterScripts
 res://Scripts/Shaders
-res://Scripts/GunScripts
 res://Prefabs
 res://
-res://Prefabs/Guns
 res://Sprites
 res://Scenes

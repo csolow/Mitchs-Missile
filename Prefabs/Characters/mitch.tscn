@@ -1,10 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://i333cl0tlmgl"]
+[gd_scene load_steps=13 format=3 uid="uid://i333cl0tlmgl"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerScript.gd" id="1_mc6b4"]
 [ext_resource type="Shader" path="res://Scripts/Shaders/MitchShader.gdshader" id="2_yiveg"]
 [ext_resource type="Texture2D" uid="uid://dw8wvkgoro2xi" path="res://Sprites/Mitch/Mitch.png" id="3_fk7t7"]
 [ext_resource type="Script" path="res://Hand.gd" id="4_by880"]
-[ext_resource type="PackedScene" uid="uid://dhal011dq5cbw" path="res://Prefabs/Guns/AutomaticGun.tscn" id="5_3g167"]
+[ext_resource type="Script" path="res://Prefabs/Characters/WeaponManager.gd" id="5_dwdo3"]
+[ext_resource type="Resource" uid="uid://bpxn0eqjvmdfk" path="res://Resources/FireworkGun.tres" id="7_foxyq"]
+[ext_resource type="Resource" uid="uid://b4queoih6wt2s" path="res://Resources/AutomaticGun.tres" id="7_ijgng"]
+[ext_resource type="Resource" uid="uid://83a3g2m3mag8" path="res://Resources/GigiGun.tres" id="8_bw324"]
+[ext_resource type="Resource" uid="uid://b3fd1pe45wwwq" path="res://Resources/MegaGun.tres" id="9_yqrgc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o4l5k"]
 shader = ExtResource("2_yiveg")
@@ -73,16 +77,9 @@ metadata/_edit_use_anchors_ = true
 [node name="ArmPivot" type="Node2D" parent="."]
 script = ExtResource("4_by880")
 
-[node name="FireworkGun" parent="ArmPivot" groups=["Gun"] instance=ExtResource("5_3g167")]
-bullet_spread = 10.0
-automatic = true
-fire_cooldown = 0.2
-reload_cooldown = 0.2
-ammo_amount = 5
-knockback_speed = 600.0
-
-[node name="InstantiationPoint" type="Node2D" parent="ArmPivot/FireworkGun"]
-position = Vector2(70, 0)
+[node name="WeaponManager" type="Node2D" parent="ArmPivot"]
+script = ExtResource("5_dwdo3")
+weapon_resources = Array[Resource("res://Scripts/Weapons/Weapon_Resource.gd")]([ExtResource("7_ijgng"), ExtResource("7_foxyq"), ExtResource("8_bw324"), ExtResource("9_yqrgc")])
 
 [node name="Node2D" type="Node2D" parent="."]
 

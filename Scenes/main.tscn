@@ -194,7 +194,7 @@ offset_bottom = 40.0
 [node name="Ground container" type="Node2D" parent="."]
 
 [node name="Ground3" type="StaticBody2D" parent="Ground container" groups=["Ground"]]
-position = Vector2(-1127, -209)
+position = Vector2(-1026, -206)
 rotation = 3.14159
 scale = Vector2(3.20322, -26.6239)
 

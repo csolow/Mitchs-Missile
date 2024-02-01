@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=4 format=3 uid="uid://b3fd1pe45wwwq"]
+
+[ext_resource type="PackedScene" uid="uid://ds4whkpi4ftql" path="res://Prefabs/Projectiles/FireworkProjectile.tscn" id="1_eha4m"]
+[ext_resource type="Script" path="res://Scripts/Weapons/Weapon_Resource.gd" id="2_6nvlc"]
+[ext_resource type="PackedScene" uid="uid://dhal011dq5cbw" path="res://Prefabs/Guns/AutomaticGun.tscn" id="3_j2qr1"]
+
+[resource]
+script = ExtResource("2_6nvlc")
+weapon_scene = ExtResource("3_j2qr1")
+Projectile = ExtResource("1_eha4m")

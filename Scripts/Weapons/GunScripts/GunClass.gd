@@ -24,8 +24,8 @@ var infinite_ammo = false
 var rocket_prefab
 
 @onready var instantiation_point_object = get_node("InstantiationPoint")
-@onready var arm_pivot_child = get_parent()
-@onready var player_object = get_parent().get_parent()
+@onready var arm_pivot_child = get_parent().get_parent()
+@onready var player_object = get_parent().get_parent().get_parent()
 
 
 # Called when the node enters the scene tree for the first time.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bqm2ngau8opnl"]
+[gd_scene load_steps=31 format=3 uid="uid://dhqjqccnp1wp8"]
 
 [ext_resource type="Script" path="res://Scripts/MenuScripts/MenuHandler.gd" id="1_2ks7f"]
 [ext_resource type="PackedScene" uid="uid://i333cl0tlmgl" path="res://Prefabs/Characters/mitch.tscn" id="2_f1t1j"]

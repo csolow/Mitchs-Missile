@@ -7,14 +7,16 @@ extends CharacterClass2D
 @export var collision_friction = 1.0
 @export var rocket_speed = 70.0
 
+
+
 # Get the gravity from the project settings so you can sync with rigid body nodes.
 @onready var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 #
-@onready var rocket_to_be_spawned = load("res://Prefabs/Projectiles/FireworkProjectile.tscn")
-@onready var instantiation_point_object = get_node("ArmPivot/FireworkGun/InstantiationPoint")
-@onready var arm_pivot_child = get_node("ArmPivot") 
-@onready var FireworkGun = get_node("ArmPivot/FireworkGun") 
+@export var rocket_to_be_spawned: PackedScene
+@onready var arm_pivot_child = $ArmPivot
+@onready var Weapon_Manager = $ArmPivot/WeaponManager
+var CurrentGun = null
 
 #Cooldown variables
 @export var cooldown_start = 0.2
@@ -33,26 +35,36 @@ var override_movement = false
 
 func _ready():
 	$MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
+	$Control/RichTextLabel.text = CharacterName
+	
 
 
 func character_process(delta):
 	#Handle Cooldown
 	cooldown_counter += delta
 	
-	#Handle firing
+	#Handle Weapon Changing
+	if Input.is_action_just_pressed("weapon_down"):
+		if Weapon_Manager.has_method("weapon_down"):
+			Weapon_Manager.weapon_down()
+
+	if Input.is_action_just_pressed("weapon_up"):
+		if Weapon_Manager.has_method("weapon_up"):
+			print(CurrentGun.name)
+			Weapon_Manager.weapon_up()
 	
+	#Handle firing	
 	if Input.is_action_just_pressed("fire") and not override_movement:
-		if get_node("ArmPivot/FireworkGun").has_method("start_fire"):
-			get_node("ArmPivot/FireworkGun").start_fire()
-	
-			
+		if CurrentGun.has_method("start_fire"):
+			CurrentGun.start_fire()
+
 	if Input.is_action_just_released("fire"):
-		if get_node("ArmPivot/FireworkGun").has_method("stop_fire"):
-			get_node("ArmPivot/FireworkGun").stop_fire()
+		if CurrentGun.has_method("stop_fire"):
+			CurrentGun.stop_fire()
 	
 	if Input.is_action_just_pressed("reload"):
-		if get_node("ArmPivot/FireworkGun").has_method("reload"):
-			get_node("ArmPivot/FireworkGun").reload()
+		if CurrentGun.has_method("reload"):
+			CurrentGun.reload()
 
 func character_physics_process(delta):
 	if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
@@ -111,9 +123,6 @@ func get_input_direction() -> Vector2:
 	
 	return input_direction
 
-func _on_body_entered(body):
-
-	pass
 
 func on_explosion_body_entered(body):
 	var new_velocity = calculate_difference_vector(body.get_global_transform().get_origin())
@@ -132,11 +141,12 @@ func hit_by_rocket (knockback_vector):
 	take_damage(knockback_vector.length() * rocket_damage_factor)
 	velocity = knockback_vector.normalized() * rocket_speed
 	override_movement = true
-	stop_override_movement()
+	#stop_override_movement()
 	pass
 
 func stop_override_movement ():
-	await get_tree().create_timer(1.0).timeout
-	override_movement = false
+	#await get_tree().create_timer(1.0).timeout
+	#override_movement = false
+	pass
 
 

@@ -1,5 +1,5 @@
-MultiplayerSynchronizer
 Node2D
+MultiplayerSynchronizer
 Label
 LineEdit
 Button
@@ -12,4 +12,3 @@ HBoxContainer
 RichTextLabel
 GPUParticles2D
 Sprite2D
-Gun
