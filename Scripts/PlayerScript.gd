@@ -30,6 +30,11 @@ var override_movement = false
 @export var collision_damage_factor = 0.005 
 @export var rocket_damage_factor = 1.0
 
+
+func _ready():
+	$MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
+
+
 func character_process(delta):
 	#Handle Cooldown
 	cooldown_counter += delta
@@ -50,31 +55,32 @@ func character_process(delta):
 			get_node("ArmPivot/FireworkGun").reload()
 
 func character_physics_process(delta):
-	temp_velocity = velocity
-	var input_dir: Vector2 = get_input_direction()
-	
-	# Add the gravity.
-	gravity_vector.y = gravity * delta
+	if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
+		temp_velocity = velocity
+		var input_dir: Vector2 = get_input_direction()
+		
+		# Add the gravity.
+		gravity_vector.y = gravity * delta
 
-	# Handle Jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		temp_velocity.y = jump_speed
+		# Handle Jump.
+		if Input.is_action_just_pressed("jump") and is_on_floor():
+			temp_velocity.y = jump_speed
 
-	# Moving
-	if input_dir != Vector2.ZERO and is_on_floor():
-		accelerate(input_dir)
-	# Idle
-	elif input_dir == Vector2.ZERO and is_on_floor():
-		apply_friction()
-	# Moving in air
-	#elif input_dir != Vector2.ZERO and not is_on_floor():
-		#apply_air_resistance(delta, input_dir)
-	
-	if not override_movement:
-		velocity = temp_velocity
-	velocity += gravity_vector
-	
-	move(delta)
+		# Moving
+		if input_dir != Vector2.ZERO and is_on_floor():
+			accelerate(input_dir)
+		# Idle
+		elif input_dir == Vector2.ZERO and is_on_floor():
+			apply_friction()
+		# Moving in air
+		#elif input_dir != Vector2.ZERO and not is_on_floor():
+			#apply_air_resistance(delta, input_dir)
+		
+		if not override_movement:
+			velocity = temp_velocity
+		velocity += gravity_vector
+		
+		move(delta)
  
 func move(delta):
 	if not override_movement:

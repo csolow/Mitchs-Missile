@@ -1,8 +1,11 @@
-res://Scenes/main.tscn
+res://Prefabs/Characters/mitch.tscn
+res://Scripts/Shaders/MitchShader.gdshader
 res://Scripts/Shaders/distortion.gdshader
 res://Scripts/Shaders/fireworkparticle.gdshader
-res://Scripts/Shaders/MitchShader.gdshader
-res://Scripts/Scenemanager.gd
+res://Scenes/main.tscn
 res://Scenes/options_menu.tscn
 res://Scenes/menu.tscn
 res://Scenes/Singleplayer.tscn
+res://Scripts/PlayerScript.gd
+res://Scripts/Scenemanager.gd
+res://Prefabs/Guns/FireworkGun.tscn

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://i333cl0tlmgl"]
+[gd_scene load_steps=9 format=3 uid="uid://i333cl0tlmgl"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerScript.gd" id="1_mc6b4"]
 [ext_resource type="Shader" path="res://Scripts/Shaders/MitchShader.gdshader" id="2_yiveg"]
@@ -15,6 +15,14 @@ shader_parameter/spill = 0.1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_684jq"]
 size = Vector2(64, 64)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_18fe2"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("ArmPivot:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
 
 [node name="Mitch" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(0, -3)
@@ -77,3 +85,6 @@ knockback_speed = 600.0
 position = Vector2(70, 0)
 
 [node name="Node2D" type="Node2D" parent="."]
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_18fe2")
