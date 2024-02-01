@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dhqjqccnp1wp8"]
+[gd_scene load_steps=31 format=3 uid="uid://die5i6wwjeucg"]
 
 [ext_resource type="Script" path="res://Scripts/MenuScripts/MenuHandler.gd" id="1_2ks7f"]
 [ext_resource type="PackedScene" uid="uid://i333cl0tlmgl" path="res://Prefabs/Characters/mitch.tscn" id="2_f1t1j"]
@@ -143,14 +143,13 @@ script = ExtResource("4_gdb2q")
 interpolation_speed = 2.0
 
 [node name="FireworkGun" parent="Turret2/TurretPivot" groups=["Gun"] instance=ExtResource("3_crc6u")]
-bullet_spread = 10.0
 automatic = true
 fire_cooldown = 1.0
 reload_cooldown = 2.0
 ammo_amount = 6
 knockback_speed = 400.0
 
-[node name="InstantiationPoint" type="Node2D" parent="Turret2/TurretPivot/FireworkGun"]
+[node name="InstantiationPoint2" type="Node2D" parent="Turret2/TurretPivot/FireworkGun"]
 position = Vector2(70, 0)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Turret2"]
