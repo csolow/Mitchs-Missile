@@ -16,19 +16,22 @@ func game_over ():
 
 # remember to add this to main scripts process. 
 func _process(delta):
-	character_process(delta)
-	health_process(delta)
+	if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
+		character_process(delta)
+		health_process(delta)
 
 func health_process (delta):
-	if Health <= 0:
-		#print("You dead")
-		pass
+	if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
+		if Health <= 0:
+			#print("You dead")
+			pass
 
 func character_process(delta):
 	pass
 	
 func _physics_process(delta):
-	character_physics_process(delta)
+	if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():	
+		character_physics_process(delta)
 
 func character_physics_process(delta):
 	pass

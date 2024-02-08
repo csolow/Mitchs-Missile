@@ -58,7 +58,7 @@ func _on_host_button_button_down():
 	#anden parameter er mængden af spillere
 	var error = peer.create_server(port, 3)
 	if error != OK:
-		print("Cannot Host: " + error)
+		print("Cannot Host: ", error)
 		return
 	peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
 	

@@ -1,4 +1,6 @@
 Node2D
+Node
+MultiplayerSpawner
 MultiplayerSynchronizer
 Label
 LineEdit
@@ -10,5 +12,3 @@ CharacterBody2D
 VBoxContainer
 HBoxContainer
 RichTextLabel
-GPUParticles2D
-Sprite2D

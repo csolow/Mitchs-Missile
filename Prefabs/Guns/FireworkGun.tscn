@@ -14,8 +14,7 @@ fill_to = Vector2(0.0321101, 0.399083)
 [node name="FireworkGun" type="Node2D"]
 script = ExtResource("1_mcxkn")
 fire_cooldown = 0.2
-reload_cooldown = 0.5
-knockback_speed = 300.0
+knockback_speed = 500.0
 
 [node name="FireworkSprite" type="Sprite2D" parent="."]
 position = Vector2(46, 0)

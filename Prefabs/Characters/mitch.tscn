@@ -1,14 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://i333cl0tlmgl"]
+[gd_scene load_steps=12 format=3 uid="uid://i333cl0tlmgl"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerScript.gd" id="1_mc6b4"]
 [ext_resource type="Shader" path="res://Scripts/Shaders/MitchShader.gdshader" id="2_yiveg"]
 [ext_resource type="Texture2D" uid="uid://dw8wvkgoro2xi" path="res://Sprites/Mitch/Mitch.png" id="3_fk7t7"]
-[ext_resource type="Script" path="res://Hand.gd" id="4_by880"]
-[ext_resource type="Script" path="res://Prefabs/Characters/WeaponManager.gd" id="5_dwdo3"]
+[ext_resource type="Script" path="res://Scripts/Hand.gd" id="4_so7pc"]
+[ext_resource type="Script" path="res://Scripts/Weapons/WeaponManager.gd" id="5_la346"]
 [ext_resource type="Resource" uid="uid://bpxn0eqjvmdfk" path="res://Resources/FireworkGun.tres" id="7_foxyq"]
 [ext_resource type="Resource" uid="uid://b4queoih6wt2s" path="res://Resources/AutomaticGun.tres" id="7_ijgng"]
-[ext_resource type="Resource" uid="uid://83a3g2m3mag8" path="res://Resources/GigiGun.tres" id="8_bw324"]
-[ext_resource type="Resource" uid="uid://b3fd1pe45wwwq" path="res://Resources/MegaGun.tres" id="9_yqrgc"]
+[ext_resource type="Texture2D" uid="uid://dh7l4ip1gf7vp" path="res://Sprites/Mitch/rocket.png" id="8_tidw7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o4l5k"]
 shader = ExtResource("2_yiveg")
@@ -75,13 +74,18 @@ text = "Mitch"
 metadata/_edit_use_anchors_ = true
 
 [node name="ArmPivot" type="Node2D" parent="."]
-script = ExtResource("4_by880")
+script = ExtResource("4_so7pc")
 
 [node name="WeaponManager" type="Node2D" parent="ArmPivot"]
-script = ExtResource("5_dwdo3")
-weapon_resources = Array[Resource("res://Scripts/Weapons/Weapon_Resource.gd")]([ExtResource("7_ijgng"), ExtResource("7_foxyq"), ExtResource("8_bw324"), ExtResource("9_yqrgc")])
+script = ExtResource("5_la346")
+weapon_resources = Array[Resource("res://Scripts/Weapons/Weapon_Resource.gd")]([ExtResource("7_ijgng"), ExtResource("7_foxyq")])
 
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_18fe2")
+
+[node name="Rocket" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 3)
+texture = ExtResource("8_tidw7")

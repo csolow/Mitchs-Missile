@@ -1,14 +1,14 @@
-[gd_scene load_steps=25 format=3 uid="uid://bqm2ngau8opnl"]
+[gd_scene load_steps=25 format=3 uid="uid://c7nxl4pf5777p"]
 
-[ext_resource type="Script" path="res://Scripts/Scenemanager.gd" id="1_yi4bq"]
-[ext_resource type="PackedScene" uid="uid://i333cl0tlmgl" path="res://Prefabs/Characters/mitch.tscn" id="2_5qlgf"]
-[ext_resource type="Script" path="res://Scripts/CooldownContainer.gd" id="3_mo3i7"]
-[ext_resource type="Shader" path="res://Scripts/Shaders/distortion.gdshader" id="7_d3e8m"]
-[ext_resource type="Texture2D" uid="uid://c6jpe33hy4qpa" path="res://icon.svg" id="8_l3iuo"]
-[ext_resource type="Texture2D" uid="uid://0h1ynmlncp4q" path="res://Sprites/particles-single.png" id="9_a1bay"]
-[ext_resource type="Script" path="res://Scripts/FireworkParticles.gd" id="10_mux8q"]
-[ext_resource type="Script" path="res://Scripts/FPS.gd" id="11_720r1"]
-[ext_resource type="Script" path="res://Scripts/HealthBar.gd" id="11_hmr5p"]
+[ext_resource type="Script" path="res://Scripts/Scenemanager.gd" id="1_lyiv1"]
+[ext_resource type="PackedScene" uid="uid://i333cl0tlmgl" path="res://Prefabs/Characters/mitch.tscn" id="2_5frvt"]
+[ext_resource type="Script" path="res://Scripts/FPS.gd" id="3_hd7wa"]
+[ext_resource type="Script" path="res://Scripts/CooldownContainer.gd" id="4_s2kgo"]
+[ext_resource type="Script" path="res://Scripts/HealthBar.gd" id="5_rm5br"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/distortion.gdshader" id="6_0fvdg"]
+[ext_resource type="Texture2D" uid="uid://c6jpe33hy4qpa" path="res://icon.svg" id="7_10ljl"]
+[ext_resource type="Texture2D" uid="uid://0h1ynmlncp4q" path="res://Sprites/particles-single.png" id="8_de8c2"]
+[ext_resource type="Script" path="res://Scripts/FireworkParticles.gd" id="9_lskwg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b4420"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -37,7 +37,7 @@ expand_margin_bottom = 4.0
 bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iowwy"]
-shader = ExtResource("7_d3e8m")
+shader = ExtResource("6_0fvdg")
 shader_parameter/strength = 0.055
 shader_parameter/center = Vector2(0.3, 0.535)
 shader_parameter/radius = 0.276
@@ -94,8 +94,8 @@ gradient = SubResource("Gradient_ethal")
 size = Vector2(64, 64)
 
 [node name="Main" type="Node2D"]
-script = ExtResource("1_yi4bq")
-playerscene = ExtResource("2_5qlgf")
+script = ExtResource("1_lyiv1")
+playerscene = ExtResource("2_5frvt")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
@@ -113,7 +113,7 @@ offset_left = 496.0
 offset_top = -287.0
 offset_right = 536.0
 offset_bottom = -247.0
-script = ExtResource("11_720r1")
+script = ExtResource("3_hd7wa")
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="Camera2D/Overlay"]
 layout_mode = 0
@@ -121,7 +121,7 @@ offset_left = 805.0
 offset_top = -623.0
 offset_right = 845.0
 offset_bottom = -583.0
-script = ExtResource("11_720r1")
+script = ExtResource("3_hd7wa")
 
 [node name="Container" type="Container" parent="Camera2D/Overlay"]
 layout_mode = 0
@@ -129,21 +129,22 @@ offset_left = -563.0
 offset_top = -301.0
 offset_right = -523.0
 offset_bottom = -261.0
-script = ExtResource("3_mo3i7")
+script = ExtResource("4_s2kgo")
 
 [node name="Panel" type="Panel" parent="Camera2D/Overlay/Container"]
 layout_mode = 2
 
 [node name="HealthBar" type="ProgressBar" parent="Camera2D/Overlay"]
+top_level = true
 layout_mode = 0
 offset_left = -950.0
-offset_top = -581.0
+offset_top = -580.0
 offset_right = -350.0
-offset_bottom = -551.0
+offset_bottom = -550.0
 theme_override_styles/background = SubResource("StyleBoxFlat_b4420")
 theme_override_styles/fill = SubResource("StyleBoxFlat_yddch")
 value = 60.0
-script = ExtResource("11_hmr5p")
+script = ExtResource("5_rm5br")
 
 [node name="DamageBar" type="ProgressBar" parent="Camera2D/Overlay/HealthBar"]
 z_index = -1
@@ -164,20 +165,20 @@ top_level = true
 z_as_relative = false
 material = SubResource("ShaderMaterial_iowwy")
 scale = Vector2(20, 20)
-texture = ExtResource("8_l3iuo")
+texture = ExtResource("7_10ljl")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 visible = false
 emitting = false
 amount = 50
 process_material = SubResource("ParticleProcessMaterial_k5a5r")
-texture = ExtResource("9_a1bay")
+texture = ExtResource("8_de8c2")
 explosiveness = 1.0
 fixed_fps = 25
 trail_enabled = true
 trail_lifetime = 0.65
 trail_sections = 2
-script = ExtResource("10_mux8q")
+script = ExtResource("9_lskwg")
 
 [node name="Control" type="Control" parent="."]
 visible = false
@@ -193,52 +194,48 @@ offset_bottom = 40.0
 
 [node name="Ground container" type="Node2D" parent="."]
 
-[node name="Ground3" type="StaticBody2D" parent="Ground container" groups=["Ground"]]
-position = Vector2(-1160, -201)
+[node name="Pillar1" type="StaticBody2D" parent="Ground container" groups=["Ground"]]
+position = Vector2(-1070, -201)
 rotation = 3.14159
 scale = Vector2(3.20322, -26.6239)
 
-[node name="Sprite2D" type="Sprite2D" parent="Ground container/Ground3"]
+[node name="Sprite2D" type="Sprite2D" parent="Ground container/Pillar1"]
 texture = SubResource("GradientTexture2D_nmsk5")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground container/Ground3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground container/Pillar1"]
 position = Vector2(0, 0.000244141)
 shape = SubResource("RectangleShape2D_vgkwu")
 
-[node name="Ground" type="StaticBody2D" parent="Ground container" groups=["Ground"]]
-position = Vector2(6.00001, 102)
-scale = Vector2(33.2539, 0.809002)
-
-[node name="Sprite2D" type="Sprite2D" parent="Ground container/Ground"]
-texture = SubResource("GradientTexture2D_nmsk5")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground container/Ground"]
-position = Vector2(0, 0.000244141)
-shape = SubResource("RectangleShape2D_vgkwu")
-
-[node name="Ground2" type="StaticBody2D" parent="Ground container" groups=["Ground"]]
-position = Vector2(1069, -157)
+[node name="Pillar2" type="StaticBody2D" parent="Ground container" groups=["Ground"]]
+position = Vector2(1070, 0)
 scale = Vector2(3.04999, 26.731)
 
-[node name="Sprite2D" type="Sprite2D" parent="Ground container/Ground2"]
+[node name="Sprite2D" type="Sprite2D" parent="Ground container/Pillar2"]
 texture = SubResource("GradientTexture2D_nmsk5")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground container/Ground2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground container/Pillar2"]
 position = Vector2(0, 0.000244141)
+shape = SubResource("RectangleShape2D_vgkwu")
+
+[node name="Ground1" type="StaticBody2D" parent="Ground container" groups=["Ground"]]
+position = Vector2(0, 400)
+scale = Vector2(28, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground container/Ground1"]
+texture = SubResource("GradientTexture2D_nmsk5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground container/Ground1"]
+position = Vector2(0, 0.000244141)
+rotation = -1.5708
 shape = SubResource("RectangleShape2D_vgkwu")
 
 [node name="Spawnpoints" type="Node2D" parent="."]
+position = Vector2(0, 283)
 
 [node name="0" type="Node2D" parent="Spawnpoints" groups=["playerspawnpoint"]]
-position = Vector2(-720, 0)
+position = Vector2(-715, 0)
 
 [node name="1" type="Node2D" parent="Spawnpoints" groups=["playerspawnpoint"]]
-position = Vector2(720, 0)
-
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-spawn_path = NodePath("../SpawnObjects")
-spawn_limit = 20
-
-[node name="SpawnObjects" type="Node2D" parent="."]
+position = Vector2(715, 0)
 
 [connection signal="timeout" from="Camera2D/Overlay/HealthBar/Timer" to="Camera2D/Overlay/HealthBar" method="_on_timer_timeout"]

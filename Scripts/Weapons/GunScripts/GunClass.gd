@@ -1,4 +1,4 @@
-extends Node2D
+extends Weapon
 class_name Gun
 
 @export var automatic = false
@@ -20,8 +20,6 @@ var infinite_ammo = false
 
 @export var knockback_speed = 0.0
 
-#Declare from guns
-var rocket_prefab
 
 @onready var instantiation_point_object = get_node("InstantiationPoint")
 @onready var arm_pivot_child = get_parent().get_parent()
@@ -44,10 +42,10 @@ func _process(delta):
 func fire_gun():
 	shoot()
 	fire_cooldown_counter = 0
-	if not infinite_ammo:
-		current_ammo -= 1
+	#if not infinite_ammo:
+	current_ammo -= 1
 	if not automatic:
-		self.firing = false
+		firing = false
 
 func get_instantiation_vector():
 	var instantiation_vector = instantiation_point_object.global_position
@@ -66,14 +64,16 @@ func base_gun_process(delta):
 		reload_cooldown_counter += delta
 		pass
 	
-	if reload_cooldown_counter >= reload_cooldown:
+	if reload_cooldown_counter >= reload_cooldown and reloading:
 		current_ammo = ammo_amount
 		reloading = false
 		out_of_ammo = false
 		reload_cooldown_counter = 0
 
+
 func shoot():
-	var parent_node = get_tree().get_root().get_node("Main")
+	var root_node = get_tree().get_root().get_node("Main")
+	var spawner = root_node.get_node("MultiplayerSpawner")
 	var rocket_instance = rocket_prefab.instantiate()
 	
 	rocket_instance.transform = rocket_instance.transform.translated(get_instantiation_vector())
@@ -82,8 +82,12 @@ func shoot():
 	if player_object.has_method("add_knockback"):
 		player_object.add_knockback(knockback_speed)
 	
+	
 	#Add instance to scene
-	parent_node.add_child(rocket_instance)
+	root_node.get_node("SpawnObjects").add_child(rocket_instance)
+	spawner.add_spawnable_scene(rocket_instance.get_path())
+	
+	spawner.spawn(rocket_instance)
 	
 
 func start_fire():	

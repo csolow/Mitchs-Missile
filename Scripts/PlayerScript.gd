@@ -63,11 +63,11 @@ func character_process(delta):
 			CurrentGun.stop_fire()
 	
 	if Input.is_action_just_pressed("reload"):
+		print("reload")
 		if CurrentGun.has_method("reload"):
 			CurrentGun.reload()
 
 func character_physics_process(delta):
-	if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
 		temp_velocity = velocity
 		var input_dir: Vector2 = get_input_direction()
 		

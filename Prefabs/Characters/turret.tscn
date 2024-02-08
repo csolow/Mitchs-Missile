@@ -47,7 +47,6 @@ script = ExtResource("2_l58yg")
 interpolation_speed = 2.0
 
 [node name="FireworkGun" parent="TurretPivot" groups=["Gun"] instance=ExtResource("3_iyuil")]
-automatic = true
 fire_cooldown = 1.0
 reload_cooldown = 2.0
 ammo_amount = 6

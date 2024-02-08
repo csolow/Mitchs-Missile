@@ -1,3 +1,5 @@
+res://Sprites/Mitch
+res://Scripts/Shaders
 res://Prefabs/Guns
 res://Scripts/Weapons/GunScripts
 res://Prefabs/Projectiles
@@ -5,7 +7,6 @@ res://Resources
 res://Prefabs/Characters
 res://Scripts
 res://Scripts/CharacterScripts
-res://Scripts/Shaders
 res://Prefabs
 res://
 res://Sprites
