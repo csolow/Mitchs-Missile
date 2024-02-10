@@ -21,10 +21,9 @@ func _process(delta):
 		health_process(delta)
 
 func health_process (delta):
-	if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
-		if Health <= 0:
-			#print("You dead")
-			pass
+	if Health <= 0:
+		#print("You dead")
+		pass
 
 func character_process(delta):
 	pass

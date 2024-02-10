@@ -1,4 +1,5 @@
 extends CharacterClass2D
+
 @export var speed = 5
 @export var acceleration = 5
 @export var friction = 5
@@ -91,6 +92,18 @@ func character_physics_process(delta):
 		if not override_movement:
 			velocity = temp_velocity
 		velocity += gravity_vector
+		
+		var flip_yes = velocity.x > 0
+		if is_on_floor():
+			$AnimatedSprite2D.play("idle")
+		elif velocity.y > 0:
+			$AnimatedSprite2D.play("down")
+			flip_yes = (velocity.x > 0)
+		elif velocity.y < 0:
+			$AnimatedSprite2D.play("jump") 
+		
+		$AnimatedSprite2D.flip_h = flip_yes
+		
 		
 		move(delta)
  

@@ -1,4 +1,5 @@
 Node2D
+AnimatedSprite2D
 Node
 MultiplayerSpawner
 MultiplayerSynchronizer
@@ -11,4 +12,3 @@ Control
 CharacterBody2D
 VBoxContainer
 HBoxContainer
-RichTextLabel

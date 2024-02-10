@@ -1,0 +1,42 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://bh01mtatlu12s"]
+
+[ext_resource type="Texture2D" uid="uid://briiyu6q0gx5" path="res://Sprites/Mitch/Mitch (1).png" id="1_ko26w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wknuc"]
+atlas = ExtResource("1_ko26w")
+region = Rect2(794, 0, 397, 754)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhjn5"]
+atlas = ExtResource("1_ko26w")
+region = Rect2(0, 0, 397, 754)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5aynv"]
+atlas = ExtResource("1_ko26w")
+region = Rect2(397, 0, 397, 754)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wknuc")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhjn5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5aynv")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}]

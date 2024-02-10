@@ -1,0 +1,32 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://1xpkfpdvs7uq"]
+
+[ext_resource type="Texture2D" uid="uid://botp22v0fyk53" path="res://Sprites/Mitch/Guns.png" id="1_2lkn2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xeowx"]
+atlas = ExtResource("1_2lkn2")
+region = Rect2(0, 0, 509, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvjk7"]
+atlas = ExtResource("1_2lkn2")
+region = Rect2(509, 0, 509, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymkip"]
+atlas = ExtResource("1_2lkn2")
+region = Rect2(1018, 0, 509, 350)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xeowx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvjk7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ymkip")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

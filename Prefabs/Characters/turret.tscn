@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Turret.gd" id="1_aqiib"]
 [ext_resource type="Script" path="res://Scripts/TurretPivot.gd" id="2_l58yg"]
-[ext_resource type="PackedScene" uid="uid://dhal011dq5cbw" path="res://Prefabs/Guns/AutomaticGun.tscn" id="3_iyuil"]
+[ext_resource type="PackedScene" uid="uid://dhal011dq5cbw" path="res://Prefabs/Guns/GigiGun.tscn" id="3_iyuil"]
 
 [sub_resource type="Gradient" id="Gradient_ethal"]
 

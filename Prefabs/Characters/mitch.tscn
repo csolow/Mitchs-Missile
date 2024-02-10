@@ -1,20 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://i333cl0tlmgl"]
+[gd_scene load_steps=11 format=3 uid="uid://i333cl0tlmgl"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerScript.gd" id="1_mc6b4"]
-[ext_resource type="Shader" path="res://Scripts/Shaders/MitchShader.gdshader" id="2_yiveg"]
-[ext_resource type="Texture2D" uid="uid://dw8wvkgoro2xi" path="res://Sprites/Mitch/Mitch.png" id="3_fk7t7"]
 [ext_resource type="Script" path="res://Scripts/Hand.gd" id="4_so7pc"]
 [ext_resource type="Script" path="res://Scripts/Weapons/WeaponManager.gd" id="5_la346"]
+[ext_resource type="Resource" uid="uid://83a3g2m3mag8" path="res://Resources/GigiGun.tres" id="5_tlthl"]
+[ext_resource type="Texture2D" uid="uid://dh7l4ip1gf7vp" path="res://Sprites/rocket.png" id="6_7fsb1"]
+[ext_resource type="Resource" uid="uid://b3fd1pe45wwwq" path="res://Resources/MegaGun.tres" id="6_y6xkt"]
+[ext_resource type="SpriteFrames" uid="uid://bh01mtatlu12s" path="res://Sprites/Spritesheets/MitchSheet.tres" id="7_1qf3s"]
 [ext_resource type="Resource" uid="uid://bpxn0eqjvmdfk" path="res://Resources/FireworkGun.tres" id="7_foxyq"]
-[ext_resource type="Resource" uid="uid://b4queoih6wt2s" path="res://Resources/AutomaticGun.tres" id="7_ijgng"]
-[ext_resource type="Texture2D" uid="uid://dh7l4ip1gf7vp" path="res://Sprites/Mitch/rocket.png" id="8_tidw7"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_o4l5k"]
-shader = ExtResource("2_yiveg")
-shader_parameter/key_color = Color(0, 1, 0, 1)
-shader_parameter/similarity = 0.4
-shader_parameter/smoothness = 0.08
-shader_parameter/spill = 0.1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_684jq"]
 size = Vector2(64, 64)
@@ -30,19 +23,13 @@ properties/1/replication_mode = 1
 [node name="Mitch" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(0, -3)
 script = ExtResource("1_mc6b4")
-speed = 300
-acceleration = 250
-friction = 50
+speed = 400
+acceleration = 350
+friction = 70
+jump_speed = -450
 t = 10.0
 collision_friction = 0.5
 rocket_speed = 1750.0
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-texture_filter = 2
-material = SubResource("ShaderMaterial_o4l5k")
-position = Vector2(3.00001, 8)
-scale = Vector2(0.280172, 0.25)
-texture = ExtResource("3_fk7t7")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(0.4, 0.488007)
@@ -78,7 +65,7 @@ script = ExtResource("4_so7pc")
 
 [node name="WeaponManager" type="Node2D" parent="ArmPivot"]
 script = ExtResource("5_la346")
-weapon_resources = Array[Resource("res://Scripts/Weapons/Weapon_Resource.gd")]([ExtResource("7_ijgng"), ExtResource("7_foxyq")])
+weapon_resources = Array[Resource("res://Scripts/Weapons/Weapon_Resource.gd")]([ExtResource("7_foxyq"), ExtResource("5_tlthl"), ExtResource("6_y6xkt")])
 
 [node name="Node2D" type="Node2D" parent="."]
 
@@ -88,4 +75,10 @@ replication_config = SubResource("SceneReplicationConfig_18fe2")
 [node name="Rocket" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(0, 3)
-texture = ExtResource("8_tidw7")
+texture = ExtResource("6_7fsb1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 7)
+scale = Vector2(0.15, 0.15)
+sprite_frames = ExtResource("7_1qf3s")
+animation = &"down"

@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://ds4whkpi4ftql" path="res://Prefabs/Projectiles/FireworkProjectile.tscn" id="1_ndfaj"]
 [ext_resource type="Script" path="res://Scripts/Weapons/Weapon_Resource.gd" id="2_pic0q"]
-[ext_resource type="PackedScene" uid="uid://dhal011dq5cbw" path="res://Prefabs/Guns/AutomaticGun.tscn" id="3_xo7x0"]
+[ext_resource type="PackedScene" uid="uid://baoaojpmitit6" path="res://Prefabs/Guns/FireworkGun.tscn" id="3_4ss8e"]
 
 [resource]
 script = ExtResource("2_pic0q")
-weapon_scene = ExtResource("3_xo7x0")
+weapon_scene = ExtResource("3_4ss8e")
 Projectile = ExtResource("1_ndfaj")

@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://baoaojpmitit6"]
+[gd_scene load_steps=6 format=3 uid="uid://bv07nekt4qm5c"]
 
-[ext_resource type="Script" path="res://Scripts/Weapons/GunScripts/FireworkGun.gd" id="1_mcxkn"]
-[ext_resource type="SpriteFrames" uid="uid://1xpkfpdvs7uq" path="res://Sprites/Spritesheets/FireworkSheet.tres" id="2_3h8un"]
-[ext_resource type="Script" path="res://Scripts/Weapons/GunScripts/GunFlipScript.gd" id="3_humnq"]
+[ext_resource type="Script" path="res://Scripts/Weapons/GunScripts/FireworkGun.gd" id="1_fw15t"]
+[ext_resource type="SpriteFrames" uid="uid://1xpkfpdvs7uq" path="res://Sprites/Spritesheets/FireworkSheet.tres" id="2_cbd0i"]
+[ext_resource type="Script" path="res://Scripts/Weapons/GunScripts/GunFlipScript.gd" id="3_blhhf"]
 
 [sub_resource type="Gradient" id="Gradient_j7jqe"]
 offsets = PackedFloat32Array(0, 0.467532, 1)
@@ -13,12 +13,11 @@ gradient = SubResource("Gradient_j7jqe")
 fill_from = Vector2(1, 0.866973)
 fill_to = Vector2(0.0321101, 0.399083)
 
-[node name="FireworkGun" type="Node2D"]
-script = ExtResource("1_mcxkn")
-fire_cooldown = 0.2
-reload_cooldown = 0.3
-ammo_amount = 5
-knockback_speed = 600.0
+[node name="Shotgun" type="Node2D"]
+script = ExtResource("1_fw15t")
+fire_cooldown = 0.5
+reload_cooldown = 3.0
+knockback_speed = 800.0
 
 [node name="FireworkSprite" type="Sprite2D" parent="."]
 visible = false
@@ -27,11 +26,12 @@ scale = Vector2(0.749048, 0.261173)
 texture = SubResource("GradientTexture2D_k6tyf")
 
 [node name="InstantiationPoint" type="Node2D" parent="."]
-position = Vector2(70, 0)
+position = Vector2(84, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 2
 position = Vector2(54, -2.38419e-07)
 scale = Vector2(0.124643, 0.124643)
-sprite_frames = ExtResource("2_3h8un")
-script = ExtResource("3_humnq")
+sprite_frames = ExtResource("2_cbd0i")
+frame = 2
+script = ExtResource("3_blhhf")

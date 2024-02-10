@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://01uf2vpa8btv"]
+
+[ext_resource type="Texture2D" uid="uid://vndgqb4iha7l" path="res://Sprites/Mitch/Raketter.png" id="1_ge6ef"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dnw6"]
+atlas = ExtResource("1_ge6ef")
+region = Rect2(0, 0, 294, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iiu0j"]
+atlas = ExtResource("1_ge6ef")
+region = Rect2(294, 0, 294, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bml5s"]
+atlas = ExtResource("1_ge6ef")
+region = Rect2(588, 0, 294, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7lna"]
+atlas = ExtResource("1_ge6ef")
+region = Rect2(882, 0, 294, 200)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5dnw6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iiu0j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bml5s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7lna")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

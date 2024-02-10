@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/MenuScripts/MenuHandler.gd" id="1_2ks7f"]
 [ext_resource type="PackedScene" uid="uid://i333cl0tlmgl" path="res://Prefabs/Characters/mitch.tscn" id="2_f1t1j"]
 [ext_resource type="PackedScene" uid="uid://cpsjgw2gtsvgy" path="res://Prefabs/Characters/turret.tscn" id="3_0tkmg"]
-[ext_resource type="PackedScene" uid="uid://dhal011dq5cbw" path="res://Prefabs/Guns/AutomaticGun.tscn" id="3_crc6u"]
+[ext_resource type="PackedScene" uid="uid://dhal011dq5cbw" path="res://Prefabs/Guns/GigiGun.tscn" id="3_crc6u"]
 [ext_resource type="Script" path="res://Scripts/CooldownContainer.gd" id="3_mo3i7"]
 [ext_resource type="Script" path="res://Scripts/TurretPivot.gd" id="4_gdb2q"]
 [ext_resource type="Script" path="res://Scripts/Turret.gd" id="4_giht8"]

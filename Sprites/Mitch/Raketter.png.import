@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dh7l4ip1gf7vp"
-path="res://.godot/imported/rocket.png-ba61d420d646879dfdfc588e15979776.ctex"
+uid="uid://vndgqb4iha7l"
+path="res://.godot/imported/Raketter.png-d2a8513890a940d525f1fc992f08b659.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Mitch/rocket.png"
-dest_files=["res://.godot/imported/rocket.png-ba61d420d646879dfdfc588e15979776.ctex"]
+source_file="res://Sprites/Mitch/Raketter.png"
+dest_files=["res://.godot/imported/Raketter.png-d2a8513890a940d525f1fc992f08b659.ctex"]
 
 [params]
 

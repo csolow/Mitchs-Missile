@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dk12pgxofjqel"
-path="res://.godot/imported/MouseScope.png-6f1bd14e483b025938e06b07ff86aa66.ctex"
+uid="uid://cbxxtp73s3mop"
+path="res://.godot/imported/Ild.png-422a2124a8ffc6f4bcdd2257cd56bd21.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/MouseScope.png"
-dest_files=["res://.godot/imported/MouseScope.png-6f1bd14e483b025938e06b07ff86aa66.ctex"]
+source_file="res://Sprites/Mitch/Ild.png"
+dest_files=["res://.godot/imported/Ild.png-422a2124a8ffc6f4bcdd2257cd56bd21.ctex"]
 
 [params]
 
