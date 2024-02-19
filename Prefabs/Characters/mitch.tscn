@@ -82,3 +82,4 @@ position = Vector2(0, 7)
 scale = Vector2(0.15, 0.15)
 sprite_frames = ExtResource("7_1qf3s")
 animation = &"down"
+frame_progress = 0.175963

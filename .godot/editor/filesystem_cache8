@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1707555713
+::res://::1708342519
 default_bus_layout.tres::AudioBusLayout::4869092033606401723::1703769919::0::1::::<><>::
 icon.svg::CompressedTexture2D::6968194332278467078::1701870661::1701870661::1::::<><>::
 mitch_sprites.tres::SpriteFrames::4909581386141265554::1707384240::0::1::::<><>::
@@ -7,8 +7,8 @@ README.md::TextFile::-1::1701870661::0::1::::<><>::
 ::res://Prefabs/::1707429377
 CooldownContainer.tscn::PackedScene::5478513510860103019::1707429377::0::1::::<><>::res://Scripts/CooldownContainer.gd
 particles-single.png::CompressedTexture2D::7813882447846011554::1703699353::1703699347::1::::<><>::
-::res://Prefabs/Characters/::1707429376
-mitch.tscn::PackedScene::621063527446002159::1707429376::0::1::::<><>::res://Scripts/PlayerScript.gd<>res://Scripts/Hand.gd<>res://Scripts/Weapons/WeaponManager.gd<>uid://83a3g2m3mag8::::res://Resources/GigiGun.tres<>uid://dh7l4ip1gf7vp::::res://Sprites/rocket.png<>uid://b3fd1pe45wwwq::::res://Resources/MegaGun.tres<>uid://bh01mtatlu12s::::res://Sprites/Spritesheets/MitchSheet.tres<>uid://bpxn0eqjvmdfk::::res://Resources/FireworkGun.tres
+::res://Prefabs/Characters/::1707555788
+mitch.tscn::PackedScene::621063527446002159::1707555788::0::1::::<><>::res://Scripts/PlayerScript.gd<>res://Scripts/Hand.gd<>res://Scripts/Weapons/WeaponManager.gd<>uid://83a3g2m3mag8::::res://Resources/GigiGun.tres<>uid://dh7l4ip1gf7vp::::res://Sprites/rocket.png<>uid://b3fd1pe45wwwq::::res://Resources/MegaGun.tres<>uid://bh01mtatlu12s::::res://Sprites/Spritesheets/MitchSheet.tres<>uid://bpxn0eqjvmdfk::::res://Resources/FireworkGun.tres
 turret.tscn::PackedScene::5863391186750248696::1707429376::0::1::::<><>::res://Scripts/Turret.gd<>res://Scripts/TurretPivot.gd<>uid://dhal011dq5cbw::::res://Prefabs/Guns/GigiGun.tscn
 ::res://Prefabs/Explosions/::1707429377
 ExplosionPrefab.tscn::PackedScene::1142695505766529924::1707429377::0::1::::<><>::res://Scripts/ExplosionScript.gd<>uid://cvpjnu11h8kmi::::res://Sprites/Circle.png<>uid://0h1ynmlncp4q::::res://Sprites/particles-single.png<>res://Scripts/FireworkParticles.gd
@@ -22,10 +22,10 @@ AutomaticGun.tscn::PackedScene::580656296669935092::1707429376::0::1::::<><>::re
 FireworkProjectile.tscn::PackedScene::8483877014637839919::1707429376::0::1::::<><>::res://Scripts/FireworkPrefab.gd<>uid://0h1ynmlncp4q::::res://Sprites/particles-single.png<>uid://qjsa7nxug78s::::res://Prefabs/Explosions/ExplosionPrefab.tscn
 GigiProjectile.tscn::PackedScene::7511324850315447886::1707429376::0::1::::<><>::res://Scripts/FireworkPrefab.gd<>uid://qjsa7nxug78s::::res://Prefabs/Explosions/ExplosionPrefab.tscn<>uid://0h1ynmlncp4q::::res://Sprites/particles-single.png<>uid://bv07nekt4qm5c::::res://Prefabs/Guns/MegaGun.tscn<>uid://01uf2vpa8btv::::res://Sprites/Spritesheets/ProjectileSheet.tres
 MegaProjectile.tscn::PackedScene::6286348868542825697::1707429376::0::1::::<><>::res://Scripts/FireworkPrefab.gd<>uid://qjsa7nxug78s::::res://Prefabs/Explosions/ExplosionPrefab.tscn<>uid://0h1ynmlncp4q::::res://Sprites/particles-single.png<>uid://01uf2vpa8btv::::res://Sprites/Spritesheets/ProjectileSheet.tres<>uid://bv07nekt4qm5c::::res://Prefabs/Guns/MegaGun.tscn
-::res://Resources/::1707425196
-FireworkGun.tres::Resource/Weapon_Resource::3487568227608276496::1707425196::0::1::::<><>::uid://ds4whkpi4ftql::::res://Prefabs/Projectiles/FireworkProjectile.tscn<>res://Scripts/Weapons/Weapon_Resource.gd<>uid://baoaojpmitit6::::res://Prefabs/Guns/FireworkGun.tscn
-GigiGun.tres::Resource/Weapon_Resource::2374084776831013965::1707425196::0::1::::<><>::uid://dfasom3luha43::::res://Prefabs/Projectiles/GigiProjectile.tscn<>res://Scripts/Weapons/Weapon_Resource.gd<>uid://dhal011dq5cbw::::res://Prefabs/Guns/GigiGun.tscn
-MegaGun.tres::Resource/Weapon_Resource::4362259571336211460::1707425196::0::1::::<><>::uid://cvtfioarmkcub::::res://Prefabs/Projectiles/MegaProjectile.tscn<>res://Scripts/Weapons/Weapon_Resource.gd<>uid://bv07nekt4qm5c::::res://Prefabs/Guns/MegaGun.tscn
+::res://Resources/::1707555788
+FireworkGun.tres::Resource/Weapon_Resource::3487568227608276496::1707555788::0::1::::<><>::uid://ds4whkpi4ftql::::res://Prefabs/Projectiles/FireworkProjectile.tscn<>res://Scripts/Weapons/Weapon_Resource.gd<>uid://baoaojpmitit6::::res://Prefabs/Guns/FireworkGun.tscn
+GigiGun.tres::Resource/Weapon_Resource::2374084776831013965::1707555788::0::1::::<><>::uid://dfasom3luha43::::res://Prefabs/Projectiles/GigiProjectile.tscn<>res://Scripts/Weapons/Weapon_Resource.gd<>uid://dhal011dq5cbw::::res://Prefabs/Guns/GigiGun.tscn
+MegaGun.tres::Resource/Weapon_Resource::4362259571336211460::1707555788::0::1::::<><>::uid://cvtfioarmkcub::::res://Prefabs/Projectiles/MegaProjectile.tscn<>res://Scripts/Weapons/Weapon_Resource.gd<>uid://bv07nekt4qm5c::::res://Prefabs/Guns/MegaGun.tscn
 ::res://Scenes/::1707429376
 Audio_menu.tscn::PackedScene::7383580967218934408::1706829685::0::1::::<><>::res://Scripts/MenuScripts/Audio_menu.gd
 CameraFollower.gd::GDScript::-1::1706535535::0::1::::<>Camera2D<>::
@@ -37,7 +37,7 @@ Singleplayer.tscn::PackedScene::7730867770555372810::1707429375::0::1::::<><>::r
 Video_menu.tscn::PackedScene::6807068878290138469::1706829685::0::1::::<><>::res://Scripts/MenuScripts/Video_menu.gd
 ::res://Scenes/Levels/::1707429376
 level_1.tscn::PackedScene::7047138955790381455::1707429376::0::1::::<><>::res://Scripts/Scenemanager.gd<>uid://i333cl0tlmgl::::res://Prefabs/Characters/mitch.tscn<>res://Scripts/FPS.gd<>res://Scripts/CooldownContainer.gd<>res://Scripts/HealthBar.gd<>res://Scripts/Shaders/distortion.gdshader<>uid://c6jpe33hy4qpa::::res://icon.svg<>uid://0h1ynmlncp4q::::res://Sprites/particles-single.png<>res://Scripts/FireworkParticles.gd
-::res://Scripts/::1707429374
+::res://Scripts/::1707555788
 CooldownContainer.gd::GDScript::-1::1702053234::0::1::::<>Container<>::
 ExplosionScript.gd::GDScript::-1::1706036915::0::1::::<>Area2D<>::
 FireworkParticles.gd::GDScript::-1::1703717922::0::1::::<>GPUParticles2D<>::
@@ -47,7 +47,7 @@ GameManager.gd::GDScript::-1::1706829685::0::1::::<>Node<>::
 GPUParticle.gd::GDScript::-1::1706390228::0::1::::<>GPUParticles2D<>::
 Hand.gd::GDScript::-1::1707387029::0::1::::<>Node2D<>::
 HealthBar.gd::GDScript::-1::1706469638::0::1::::<>ProgressBar<>::
-PlayerScript.gd::GDScript::-1::1707429374::0::1::::<>CharacterClass2D<>::
+PlayerScript.gd::GDScript::-1::1707555788::0::1::::<>CharacterClass2D<>::
 Projectile.gd::GDScript::-1::1703110657::0::1::::<>Area2D<>::
 Scenemanager.gd::GDScript::-1::1706829685::0::1::::<>Node2D<>::
 Turret.gd::GDScript::-1::1706813702::0::1::::<>CharacterBody2D<>::
@@ -65,10 +65,10 @@ SettingsMainScene.gd::GDScript::-1::1706829685::0::1::::<>settings<>::
 Video_menu.gd::GDScript::-1::1706829685::0::1::::<>Control<>::
 ::res://Scripts/Obsolete/::1702332329
 PlayerScript.gd::GDScript::-1::1702332329::0::1::::<>CharacterBody2D<>::
-::res://Scripts/Shaders/::1707429377
-distortion.gdshader::Shader::-1::1707429377::0::1::::<><>::
-fireworkparticle.gdshader::Shader::-1::1707429377::0::1::::<><>::
-MitchShader.gdshader::Shader::-1::1707429377::0::1::::<><>::
+::res://Scripts/Shaders/::1707555788
+distortion.gdshader::Shader::-1::1707555788::0::1::::<><>::
+fireworkparticle.gdshader::Shader::-1::1707555788::0::1::::<><>::
+MitchShader.gdshader::Shader::-1::1707555788::0::1::::<><>::
 ::res://Scripts/Weapons/::1707388284
 WeaponClass.gd::GDScript::-1::1707388284::0::1::::Weapon<>Node2D<>::
 WeaponManager.gd::GDScript::-1::1706829685::0::1::::<>Node2D<>::
@@ -93,7 +93,7 @@ Mitch.png::CompressedTexture2D::8772914887674577090::1704391215::1704391218::1::
 MouseScope.png::CompressedTexture2D::7916490806092201579::1703109634::1707421917::1::::<><>::
 Raket ild.png::CompressedTexture2D::338277111113069919::1707421905::1707421917::1::::<><>::
 Raketter.png::CompressedTexture2D::1500996336190186851::1707421905::1707421917::1::::<><>::
-::res://Sprites/Spritesheets/::1707425322
-FireworkSheet.tres::SpriteFrames::1873319521716694200::1707422245::0::1::::<><>::uid://botp22v0fyk53::::res://Sprites/Mitch/Guns.png
-MitchSheet.tres::SpriteFrames::2930953103172051520::1707425322::0::1::::<><>::uid://briiyu6q0gx5::::res://Sprites/Mitch/Mitch (1).png
-ProjectileSheet.tres::SpriteFrames::1809619632635394375::1707424463::0::1::::<><>::uid://vndgqb4iha7l::::res://Sprites/Mitch/Raketter.png
+::res://Sprites/Spritesheets/::1707555788
+FireworkSheet.tres::SpriteFrames::1873319521716694200::1707555788::0::1::::<><>::uid://botp22v0fyk53::::res://Sprites/Mitch/Guns.png
+MitchSheet.tres::SpriteFrames::2930953103172051520::1707555788::0::1::::<><>::uid://briiyu6q0gx5::::res://Sprites/Mitch/Mitch (1).png
+ProjectileSheet.tres::SpriteFrames::1809619632635394375::1707555788::0::1::::<><>::uid://vndgqb4iha7l::::res://Sprites/Mitch/Raketter.png

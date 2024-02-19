@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://briiyu6q0gx5" path="res://Sprites/Mitch/Mitch (1).png" id="1_ko26w"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wknuc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_x215g"]
 atlas = ExtResource("1_ko26w")
-region = Rect2(794, 0, 397, 754)
+region = Rect2(397, 0, 397, 754)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bhjn5"]
 atlas = ExtResource("1_ko26w")
@@ -18,7 +18,7 @@ region = Rect2(397, 0, 397, 754)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wknuc")
+"texture": SubResource("AtlasTexture_x215g")
 }],
 "loop": true,
 "name": &"down",

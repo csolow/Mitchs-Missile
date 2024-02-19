@@ -98,12 +98,10 @@ func character_physics_process(delta):
 			$AnimatedSprite2D.play("idle")
 		elif velocity.y > 0:
 			$AnimatedSprite2D.play("down")
-			flip_yes = (velocity.x > 0)
 		elif velocity.y < 0:
 			$AnimatedSprite2D.play("jump") 
 		
 		$AnimatedSprite2D.flip_h = flip_yes
-		
 		
 		move(delta)
  
@@ -149,6 +147,7 @@ func calculate_difference_vector (prop_vector):
 func add_knockback (knockback_speed):
 	if not override_movement:
 		velocity = arm_pivot_child.get_pivot_vector().normalized() * -knockback_speed
+
 
 func hit_by_rocket (knockback_vector):
 	take_damage(knockback_vector.length() * rocket_damage_factor)

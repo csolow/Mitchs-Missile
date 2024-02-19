@@ -1,4 +1,4 @@
-res://Prefabs/Characters/mitch.tscn
+res://Scenes/main.tscn
 res://Scripts/PlayerScript.gd
 res://Sprites/Spritesheets/FireworkSheet.tres
 res://Sprites/Spritesheets/ProjectileSheet.tres
@@ -9,3 +9,18 @@ res://Resources/FireworkGun.tres
 res://Scripts/Shaders/distortion.gdshader
 res://Scripts/Shaders/fireworkparticle.gdshader
 res://Scripts/Shaders/MitchShader.gdshader
+res://Scenes/Singleplayer.tscn
+res://Scenes/menu.tscn
+res://Scenes/options_menu.tscn
+res://Prefabs/Characters/mitch.tscn
+res://Prefabs/Characters/turret.tscn
+res://Prefabs/Guns/FireworkGun.tscn
+res://Prefabs/Guns/GigiGun.tscn
+res://Scenes/Levels/level_1.tscn
+res://Prefabs/Projectiles/AutomaticGun.tscn
+res://Prefabs/Projectiles/GigiProjectile.tscn
+res://Prefabs/Guns/MegaGun.tscn
+res://Prefabs/Projectiles/MegaProjectile.tscn
+res://Prefabs/Projectiles/FireworkProjectile.tscn
+res://Prefabs/Explosions/ExplosionPrefab.tscn
+res://Prefabs/CooldownContainer.tscn
